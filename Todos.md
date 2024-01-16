@@ -36,6 +36,6 @@
 
 - [x] Update README
 - [x] Create detailed planning notes in `Planning.md`
-- [ ] Set up PostgreSQL config in Rails app
+- [x] Set up PostgreSQL config in Rails app
 - [ ] Create models
 - [ ] Add database seed
