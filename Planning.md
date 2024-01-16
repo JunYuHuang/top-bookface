@@ -201,11 +201,37 @@ Step(s):
 
 ### User Likes A Post
 
-1. TODO
+Assumption(s):
+
+- By default, any (registered) user follows themselves and this relation cannot be changed.
+- User `uA` is signed in to the app.
+- Post `pA` may or may not be authored by user `uA`.
+- Post `pA` has not been liked by user `uA`.
+
+Step(s):
+
+1. User `uA` goes to index `/` page.
+1. User `uA` clicks on the `Like` link associated with post `pA`.
+1. App creates a Like in the database that associates the user `uA` with the post `pA`.
+1. Without refreshing the page, the app updates the liked post `pA` 's displayed like counter.
+1. Without refreshing the page, the app changes the `Like` link to an `Unlike` link.
 
 ### User Un-Likes A Post
 
-1. TODO
+Assumption(s):
+
+- By default, any (registered) user follows themselves and this relation cannot be changed.
+- User `uA` is signed in to the app.
+- Post `pA` may or may not be authored by user `uA`.
+- Post `pA` has been liked by user `uA`.
+
+Step(s):
+
+1. User `uA` goes to index `/` page.
+1. User `uA` clicks on the `Unlike` link associated with post `pA`.
+1. App deletes the Like in the database that associates the user `uA` with the post `pA`.
+1. Without refreshing the page, the app updates the liked post `pA` 's displayed like counter.
+1. Without refreshing the page, the app changes the `Unlike` link to a `Like` link.
 
 ### User Creates A Comment
 
@@ -254,22 +280,35 @@ updated_at:datetime
 has_many posts
 has_many likes
 has_many comments
-has_many followers via follower_requests
-has_many followeds / followees via follower_requests
+has_many followers via follows
+has_many followees via follows
+```
+
+### `Follow` Model
+
+```
+followee_id:integer [present] (FK of `User.id`)
+follower_id:integer [present] (FK of `User.id`)
+id:integer
+created_at:datetime
+updated_at:datetime
+
+belongs_to followee (user)
+belongs_to follower (user)
 ```
 
 ### `FollowRequest` Model
 
 ```
-followed_id:integer [present] (FK of `User.id`)
-follower_id:integer [present] (FK of `User.id`)
+requestee_id:integer [present] (FK of `User.id`)
+requester_id:integer [present] (FK of `User.id`)
 status:string [present, 1 of { "pending", "accepted", "rejected" }]
 id:integer
 created_at:datetime
 updated_at:datetime
 
-belongs_to followed (user)
-belongs_to follower (user)
+belongs_to requestee (user)
+belongs_to requester (user)
 ```
 
 ### `Post` Model

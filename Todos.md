@@ -35,5 +35,6 @@
 ## Custom Todos
 
 - [ ] Set up PostgreSQL config in Rails app
-- [ ] Create detailed planning notes in `Planning.md`
+- [x] Create detailed planning notes in `Planning.md`
 - [x] Update README
+- [ ] Add database seed
