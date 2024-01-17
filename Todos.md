@@ -2,8 +2,8 @@
 
 ## MVP Requirements
 
-- [ ] Point 1 (config app with PostgreSQL)
-- [ ] Point 2 (users must be logged in to access any pages)
+- [x] Point 1 (config app with PostgreSQL)
+- [x] Point 2 (users must be logged in to access any pages)
 - [ ] Point 3 (do user auth with Devise gem)
 - [ ] Point 4 (build user follows and follow requests systems)
 - [ ] Point 5 (build posts system)
@@ -37,5 +37,14 @@
 - [x] Update README
 - [x] Create detailed planning notes in `Planning.md`
 - [x] Set up PostgreSQL config in Rails app
+- [x] Config user sign in with either username or email
+  - [x] Generate database migration file that sets the `users.username` field to be unique
+  - [x] Follow the rest of the steps in the [Devise Wiki Docs](https://github.com/heartcombo/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address)
+- [ ] Add User Sign-In function
+- [ ] Add User Sign-Out function
+- [ ] Config Devise to work with Hotwire / Turbo
+- [ ] Customize User Sign In page
+- [ ] Customize User Sign Up page
+- [ ] Config Devise to work with Hotwire
 - [ ] Create models
 - [ ] Add database seed
