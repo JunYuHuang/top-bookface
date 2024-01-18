@@ -34,29 +34,59 @@
 
 ## Custom Todos
 
+### Pre-planning Todos
+
 - [x] Update README
 - [x] Create detailed planning notes in `Planning.md`
+
+### Simple Todos
+
 - [x] Set up PostgreSQL config in Rails app
-- [x] Add User model
-- [ ] Finish User views
-  - [ ] `users/index`
-  - [ ] `users/show`
-- [ ] Finish User controller
-  - [ ] `User#index`
-  - [ ] `User#show`
-  - [ ] `User#edit`
-- [ ] Finish User routes
-  - [ ] GET `/users`
-  - [ ] GET `/users/:id`
-  - [ ] GET `/users/:id/edit`
-  - [ ] POST `/users/:id`
+
+### User Authentication Todos
+
+- [x] Add `User` model
 - [x] Config user sign in with either username or email
   - [x] Generate database migration file that sets the `users.username` field to be unique
   - [x] Follow the rest of the steps in the [Devise Wiki Docs](https://github.com/heartcombo/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address)
 - [x] Config Devise to work with Hotwire / Turbo
-- [x] Add User Sign-In function
-- [x] Add User Sign-Out function
-- [x] Customize User Sign In page
-- [x] Customize User Sign Up page
+- [x] Add `User` Sign-In function
+- [x] Add `User` Sign-Out function
+- [x] Customize `User` Sign In page
+- [x] Customize `User` Sign Up page
+
+### Basic (Forced / No Requests) Follow System Todos
+
+- [ ] Write new database migration that creates a `follows` table
+  - [ ] Add unique constraint to columns `followee_id` and `follower_id`
+- [ ] Run database migration
+- [ ] Add `Follow` model
+- [ ] Add `Follow` controller
+  - [ ] `#index`
+  - [ ] `#create`
+  - [ ] `#destroy`
+- [ ] Add `Follow` routes
+  - [ ] GET `/follows`
+  - [ ] POST `/follows`
+  - [ ] DELETE `/follows/:id`
+- [ ] Add `Follow` views
+  - [ ] `follows/index` that shows all the users the signed-in user is following and all the users the signed-in user is following.
+- [ ] Update `users/index` view to show a list with links to all users
+- [ ] Update `users/show` view to display the user's `username`, `email`, and a `Follow` or `Unfollow` button
+
+### Uncategorized Todos
+
+- [ ] Finish `User` views
+  - [ ] `users/index`
+  - [ ] `users/show`
+- [ ] Finish `User` controller
+  - [ ] `#index`
+  - [ ] `#show`
+  - [ ] `#edit`
+- [ ] Finish `User` routes
+  - [ ] GET `/users`
+  - [ ] GET `/users/:id`
+  - [ ] GET `/users/:id/edit`
+  - [ ] POST `/users/:id`
 - [ ] Create models
 - [ ] Add database seed
