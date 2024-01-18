@@ -1,0 +1,24 @@
+<header>
+  <%= link_to "📕😏 Bookface", root_path %>
+  &nbsp;
+  <% if user_signed_in? %>
+    <%= link_to "My Profile", user_path(current_user.id) %>
+    &nbsp;
+    <%= link_to(
+      "Sign Out",
+      destroy_user_session_path,
+      method: :delete, data: { turbo_method: :delete }
+    ) %>
+    &nbsp;
+    <br>
+    <br>
+    <div>
+      Welcome back, <%= current_user.username %>!
+    </div>
+  <% else %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+    &nbsp;
+    <%= link_to "Sign In", new_user_session_path %>
+    &nbsp;
+  <% end %>
+</header>
