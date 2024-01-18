@@ -4,7 +4,7 @@
 
 - [x] Point 1 (config app with PostgreSQL)
 - [x] Point 2 (users must be logged in to access any pages)
-- [ ] Point 3 (do user auth with Devise gem)
+- [x] Point 3 (do user auth with Devise gem)
 - [ ] Point 4 (build user follows and follow requests systems)
 - [ ] Point 5 (build posts system)
 - [ ] Point 6 (build post likes system)
@@ -37,14 +37,26 @@
 - [x] Update README
 - [x] Create detailed planning notes in `Planning.md`
 - [x] Set up PostgreSQL config in Rails app
+- [x] Add User model
+- [ ] Finish User views
+  - [ ] `users/index`
+  - [ ] `users/show`
+- [ ] Finish User controller
+  - [ ] `User#index`
+  - [ ] `User#show`
+  - [ ] `User#edit`
+- [ ] Finish User routes
+  - [ ] GET `/users`
+  - [ ] GET `/users/:id`
+  - [ ] GET `/users/:id/edit`
+  - [ ] POST `/users/:id`
 - [x] Config user sign in with either username or email
   - [x] Generate database migration file that sets the `users.username` field to be unique
   - [x] Follow the rest of the steps in the [Devise Wiki Docs](https://github.com/heartcombo/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address)
-- [ ] Add User Sign-In function
-- [ ] Add User Sign-Out function
-- [ ] Config Devise to work with Hotwire / Turbo
-- [ ] Customize User Sign In page
-- [ ] Customize User Sign Up page
-- [ ] Config Devise to work with Hotwire
+- [x] Config Devise to work with Hotwire / Turbo
+- [x] Add User Sign-In function
+- [x] Add User Sign-Out function
+- [x] Customize User Sign In page
+- [x] Customize User Sign Up page
 - [ ] Create models
 - [ ] Add database seed
