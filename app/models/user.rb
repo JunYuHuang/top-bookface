@@ -6,6 +6,19 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  has_many(
+    :followee_follows, class_name: "Follow", foreign_key: "followee_id"
+  )
+  has_many(
+    :follower_follows, class_name: "Follow", foreign_key: "follower_id"
+  )
+  has_many(
+    :followers, through: :followee_follows, class_name: "User"
+  )
+  has_many(
+    :followees, through: :follower_follows, class_name: "User"
+  )
+
   validates(
     :username, presence: true, uniqueness: { case_sensitive: false }
   )

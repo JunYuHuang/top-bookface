@@ -2,7 +2,11 @@
   <%= link_to "📕😏 Bookface", root_path %>
   &nbsp;
   <% if user_signed_in? %>
-    <%= link_to "My Profile", user_path(current_user.id) %>
+    <%= link_to "Users", users_path %>
+    &nbsp;
+    <%= link_to "Profile", user_path(current_user.id) %>
+    &nbsp;
+    <%= link_to "Follows", follows_path %>
     &nbsp;
     <%= link_to(
       "Sign Out",

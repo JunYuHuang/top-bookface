@@ -1,4 +1,21 @@
 <%= render "shared/header" %>
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>
+  User: <%= @is_same_user ? "You" : @user.username %>
+</h1>
+<% unless @is_same_user %>
+  <% if @is_following %>
+    <%# unfollow form %>
+    <%= form_with url: follow_path(@follow.id), method: :delete do |form| %>
+      <%= form.submit "Unfollow" %>
+    <% end %>
+  <% else %>
+    <%# follow form %>
+    <%= form_with url: follows_path, method: :post do |form| %>
+      <%= form.hidden_field :followee_id, value: @user.id %>
+      <%= form.hidden_field :follower_id, value: current_user.id %>
+      <%= form.submit "Follow" %>
+    <% end %>
+  <% end %>
+<% end %>
+<p>User profile body</p>

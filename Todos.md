@@ -5,7 +5,7 @@
 - [x] Point 1 (config app with PostgreSQL)
 - [x] Point 2 (users must be logged in to access any pages)
 - [x] Point 3 (do user auth with Devise gem)
-- [ ] Point 4 (build user follows and follow requests systems)
+- [ ] Point 4 (build basic user follows system + follow request system)
 - [ ] Point 5 (build posts system)
 - [ ] Point 6 (build post likes system)
 - [ ] Point 7 (build post comments system)
@@ -57,22 +57,29 @@
 
 ### Basic (Forced / No Requests) Follow System Todos
 
-- [ ] Write new database migration that creates a `follows` table
-  - [ ] Add unique constraint to columns `followee_id` and `follower_id`
-- [ ] Run database migration
-- [ ] Add `Follow` model
-- [ ] Add `Follow` controller
-  - [ ] `#index`
+- [x] Add `Follow` model
+- [x] Run database migration that creates a `follows` table
+  - [x] Add unique constraint to columns `followee_id` and `follower_id`
+  - [x] Update database migration script
+  - [x] Run database migration script
+- [x] Add association in `User` model to access followers
+- [x] Add association in `User` model to access followees
+- [x] Add association in `Follow` model to access follower
+- [x] Add association in `Follow` model to access followee
+- [x] Add `Follow` controller
+  - [x] `#index`
   - [ ] `#create`
   - [ ] `#destroy`
-- [ ] Add `Follow` routes
-  - [ ] GET `/follows`
+- [x] Add `Follow` routes
+  - [x] GET `/follows`
   - [ ] POST `/follows`
   - [ ] DELETE `/follows/:id`
-- [ ] Add `Follow` views
-  - [ ] `follows/index` that shows all the users the signed-in user is following and all the users the signed-in user is following.
-- [ ] Update `users/index` view to show a list with links to all users
-- [ ] Update `users/show` view to display the user's `username`, `email`, and a `Follow` or `Unfollow` button
+- [x] Add `Follow` views
+  - [x] `follows/index` that shows all the users the signed-in user is following and all the users the signed-in user is following.
+- [x] Update `users/index` view to show a list with links to all users
+- [x] Update `users/show` view to display the user's `username` and a `Follow` or `Unfollow` button
+- [ ] Fix follow form (in `users/show` view) and route handler
+- [ ] Fix unfollow form (in `users/show` view) and route handler
 
 ### Uncategorized Todos
 

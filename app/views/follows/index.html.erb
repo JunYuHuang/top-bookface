@@ -1,0 +1,33 @@
+<%= render "shared/header" %>
+
+<h1>Your Follows</h1>
+
+<h2>Following</h2>
+<% if @followees.empty? %>
+  <p>There is no one here right now.<p>
+<% else %>
+  <ul>
+    <% @followees.each do |followee| %>
+      <li>
+        <%=
+          link_to "#{followee.username}", user_path(followee.id)
+        %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h2>Followers</h2>
+<% if @followers.empty? %>
+  <p>There is no one here right now.<p>
+<% else %>
+  <ul>
+    <% @followers.each do |follower| %>
+      <li>
+        <%=
+          link_to "#{follower.username}", user_path(follower.id)
+        %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
