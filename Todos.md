@@ -68,18 +68,18 @@
 - [x] Add association in `Follow` model to access followee
 - [x] Add `Follow` controller
   - [x] `#index`
-  - [ ] `#create`
-  - [ ] `#destroy`
+  - [x] `#create`
+  - [x] `#destroy`
 - [x] Add `Follow` routes
   - [x] GET `/follows`
-  - [ ] POST `/follows`
-  - [ ] DELETE `/follows/:id`
+  - [x] POST `/follows`
+  - [x] DELETE `/follows/:id`
 - [x] Add `Follow` views
   - [x] `follows/index` that shows all the users the signed-in user is following and all the users the signed-in user is following.
 - [x] Update `users/index` view to show a list with links to all users
 - [x] Update `users/show` view to display the user's `username` and a `Follow` or `Unfollow` button
-- [ ] Fix follow form (in `users/show` view) and route handler
-- [ ] Fix unfollow form (in `users/show` view) and route handler
+- [x] Fix follow form (in `users/show` view) and route handler
+- [x] Fix unfollow form (in `users/show` view) and route handler
 
 ### Uncategorized Todos
 

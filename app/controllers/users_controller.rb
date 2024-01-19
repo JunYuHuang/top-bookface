@@ -9,10 +9,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @is_same_user = @user.id == current_user.id
     @is_following = @user.followers.exists?(id: current_user.id)
-    @follow = @user.followee_follows
-      .where([
-        "follower_id = :follower_id",
-        { follower_id: current_user.id }
-      ])
+    @follow = Follow.find_by(
+      followee_id: @user.id, follower_id: current_user.id
+    )
   end
 end

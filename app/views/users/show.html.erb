@@ -1,7 +1,9 @@
 <%= render "shared/header" %>
 
 <h1>
-  User: <%= @is_same_user ? "You" : @user.username %>
+  User:
+  <%= @user.username %>
+  <%= @is_same_user ? " (You)" : "" %>
 </h1>
 <% unless @is_same_user %>
   <% if @is_following %>
