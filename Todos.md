@@ -81,6 +81,20 @@
 - [x] Fix follow form (in `users/show` view) and route handler
 - [x] Fix unfollow form (in `users/show` view) and route handler
 
+### Advanced Follow System + Follow Request System Todos
+
+- [ ] Add `FollowRequest` model
+- [ ] Write a database migration script that creates a `follow_requests` table
+  - [ ] Index and add unique constraint to columns `requestee_id` and `requester_id`
+  - [ ] Set FKs that point to `users` tables
+- [ ] Add `FollowRequest` controller
+  - [ ] TODO
+- [ ] Add `FollowRequest` routes
+  - [ ] TODO
+- [ ] Add `FollowRequest` views?
+  - [ ] TODO
+- [ ] Update `users/index` view to show a `Follow` button for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
+
 ### Uncategorized Todos
 
 - [ ] Finish `User` views

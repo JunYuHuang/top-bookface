@@ -60,6 +60,56 @@
   - update
   - delete
 
+## Subsystem / Service Specs
+
+### `Follow` and `FollowRequest` Subsystem Specs
+
+Definition(s):
+
+- Users `uA` and `uB` are both:
+  - registered users
+  - signed in before and while they are using the app
+  - are distinct users
+- The `Follow` model is represented as the `follow` table in the database.
+- The `FollowRequest` model is represented as the `follow_requests` table in the database.
+- For user `uA` to be following user `uB` means:
+  - There is a `follows` record that links users `uA` and `uB` via their primary keys.
+  - User `uA` sent a follow request `frA` to user `uB`.
+  - User `uB` accepted the request `frA` from user `uA`.
+- For user `uA` to NOT be following user `uB` means:
+  - There is NO `follows` record that links users `uA` and `uB` via their primary keys.
+  - User `uA` may not have sent a follow request to user `uB`.
+  - User `uA` may have sent a follow request to user `uB`.
+  - If user `uA` sent a follow request `frA` to user `uB`,
+    - User `uB` has rejected the request
+    - OR User `uB` has not yet accepted the request
+- For user `uA` to send a "follow request" `frA` to user `uB` means:
+  - User `uA` is not following user `uB`.
+  - Create the follow request `frA` in the database.
+- For user `uA` to "unfollow" user `uB` means:
+  - There is a `follows` record `fA` that indicates user `uA` is following `uB`.
+  - Delete the `follows` record `fA` from the database.
+- For user `uB` to reject a "follow request" `frA` from user `uA` means:
+  - There is a `follows` record `fA` that indicates user `uA` is following `uB`.
+  - Delete the `follows` record `fA` from the database.
+- For user `uB` to accept a "follow request" `frA` from user `uA` means:
+  - There is a `follows` record `fA` that indicates user `uA` is following `uB`.
+  - Delete the `follows` record `fA` from the database.
+  - Create the `follows` record `fA` that indicates that user `uA` is following user `uB`.
+
+Constraint(s):
+
+- A follow relation is unidirectional where one user `uA` is following another user `uB`.
+- User `uA` can not directly or forcibly follow another user `uB`.
+- User `uB` must first accept a follow request `frA` from user `uA` for there to be a `follows` record to exist that links them.
+- User `uA` cannot unfollow a user `uB` if there is no `follows` record that indicates `uA` is following `uB`.
+- User `uA` does not need consent from user `uB` if they want to unfollow `uB`.
+- Users that send follow requests cannot unsend or delete any follow request(s) they have sent.
+- Users that get follow requests can delete any follow request(s) that they get.
+- A `follow_requests` record `frA` only exists if there is NO `follows` record that indicates user `uA` is following user `uB`.
+- A `follow_requests` record `frA` does not exist if there IS a `follows` record that indicates user `uA` is following user `uB`.
+- User `uA` can create 0 or 1 `follow_requests` record(s) at most for each followee that they want to follow.
+
 ## User Workflows
 
 ### User Registration
@@ -82,34 +132,11 @@ Step(s):
 
 ### User Follows Another User
 
-Assumption(s):
-
-- By default, any (registered) user follows themselves and this relation cannot be changed.
-- User `A` is signed in to the app.
-- There is NO (pending, accepted, rejected) follow relation between user `A` and user `B`.
-
-Step(s):
-
-1. User `A` goes to users index `/users` page.
-1. User `A` clicks on a `Follow` button associated with another user `B`.
-1. App creates a new record in the `follows` table of the database for this new follow relation between users `A` and `B` with a default `status` of `pending`.
-1. The clicked on `Follow` button is replaced by an `Unfollow` button.
+1. TODO
 
 ### User Unfollows Another User
 
-Assumption(s):
-
-- By default, any (registered) user follows themselves and this relation cannot be changed.
-- User `A` is signed in to the app.
-- There IS a (pending, accepted, rejected) follow relation between user `A` and user `B`.
-- The follow relation between user `A` and user `B` is one of the following from the set { `pending`, `rejected` }.
-
-Step(s):
-
-1. User `A` goes to users index `/users` page.
-1. User `A` clicks on an `Unfollow` button associated with another user `B`.
-1. App updates the record in the `follows` table of the database for this existing follow relation between users `A` and `B` with a `status` property of `pending`.
-1. The clicked on `Unfollow` button is replaced by a `Follow` button.
+1. TODO
 
 ### User Accepts A Follow Request
 
@@ -123,7 +150,6 @@ Step(s):
 
 Assumption(s):
 
-- By default, any (registered) user follows themselves and this relation cannot be changed.
 - User `A` is signed in to the app.
 - User `A` is following 0 or more other users.
 
@@ -136,7 +162,6 @@ Step(s):
 
 Assumption(s):
 
-- By default, any (registered) user follows themselves and this relation cannot be changed.
 - User `A` is signed in to the app.
 
 Step(s):
@@ -150,7 +175,6 @@ Step(s):
 
 Assumption(s):
 
-- By default, any (registered) user follows themselves and this relation cannot be changed.
 - User `A` is signed in to the app.
 
 Step(s):
@@ -168,7 +192,6 @@ Step(s):
 
 Assumption(s):
 
-- By default, any (registered) user follows themselves and this relation cannot be changed.
 - User `uA` is signed in to the app.
 - Post `pA` is authored by user `uA`. If not, the app redirects the user `uA` back to the index page with an error message indicating that the user is not authorized to edit the post.
 
@@ -187,7 +210,6 @@ Step(s):
 
 Assumption(s):
 
-- By default, any (registered) user follows themselves and this relation cannot be changed.
 - User `uA` is signed in to the app.
 - Post `pA` is authored by user `uA`. If not, the app redirects the user `uA` back to the index page with an error message indicating that the user is not authorized to edit the post.
 
@@ -256,11 +278,12 @@ Step(s):
 
 1. TODO
 
-## Data Model
+## Data Models
 
 Models:
 
 - User
+- Follow
 - FollowRequest
 - Post
 - Comment
@@ -302,7 +325,6 @@ belongs_to follower (user)
 ```
 requestee_id:integer [present] (FK of `User.id`)
 requester_id:integer [present] (FK of `User.id`)
-status:string [present, 1 of { "pending", "accepted", "rejected" }]
 id:integer
 created_at:datetime
 updated_at:datetime
