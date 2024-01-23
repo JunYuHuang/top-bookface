@@ -83,17 +83,60 @@
 
 ### Advanced Follow System + Follow Request System Todos
 
-- [ ] Add `FollowRequest` model
-- [ ] Write a database migration script that creates a `follow_requests` table
-  - [ ] Index and add unique constraint to columns `requestee_id` and `requester_id`
-  - [ ] Set FKs that point to `users` tables
-- [ ] Add `FollowRequest` controller
-  - [ ] TODO
+- [x] Add `FollowRequest` model (generates migration script)
+- [x] Update and run a database migration script that creates a `follow_requests` table
+  - [x] Index and add unique constraint to columns `requestee_id` and `requester_id`
+  - [x] Set FKs that point to `users` tables
+- [x] Set up association(s) so `User` model can access follow requesters (optional)
+- [ ] Update `Follow` controller
+  - [x] `#index` (see follows and followers)
+  - [ ] `#create` (accept follow + delete follow request)
+    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+  - [ ] `#destroy` (unfollow)
+    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+- [x] Update `Follow` routes
+  - [x] GET `/users/:user_id/follows`
+  - [ ] POST `/users/:user_id/follows`
+    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+  - [ ] DELETE `/users/:user_id/follows/:id`
+    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+- [x] Update `Follow` views
+  - [x] `/users/:user_id/follows/index`
+    - [x] show followees and followers for user with id `:user_id`
+- [x] Add `FollowRequest` controller
+  - [x] `#index` (see received follow requests)
+    - [x] if signed-in user does not have id `:user_id`, redirect to index page b/c user is not authorized to see them
+  - [x] `#create` (send follow request)
+    - [x] if signed-in user is unauthorized, redirect to root
+  - [ ] `#destroy` (reject follow request)
+    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
 - [ ] Add `FollowRequest` routes
-  - [ ] TODO
-- [ ] Add `FollowRequest` views?
-  - [ ] TODO
-- [ ] Update `users/index` view to show a `Follow` button for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
+  - [x] GET `/users/:user_id/follow_requests`
+  - [x] POST `/users/:user_id/follow_requests`
+  - [ ] DELETE `/users/:user_id/follow_requests/:id`
+- [ ] Add `FollowRequest` views
+  - [ ] `users/:user_id/follow_requests/index`
+    - [ ] shows a list of all the sent follow requests from the sign-in user
+    - [x] shows a list of all the users that sent a follow request to the user with id `:user_id`
+    - [ ] accept request form per shown user
+    - [ ] reject request form per shown user
+- [ ] Update `User` model
+  - [x] Add `is_same_user?` helper method
+  - [x] Add `can_view_follow_requests?` helper method
+  - [x] Add `can_send_follow_request?` helper method
+  - [ ] Add `can_accept_follow_request?` helper method
+  - [ ] Add `can_unfollow?` helper method (optional)
+  - [ ] Add `can_reject_follow_request?` (optional)
+- [ ] Update `User` views
+  - [ ] `users/:id/show`
+    - [ ] use `_follow_request_form` and `_unfollow_form` view partials from `/shared`
+  - [ ] `users/`
+    - [ ] follow request form for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
+- [ ] Update `shared` views
+  - [x] `shared/_header`
+    - [x] Update `Follow Requests` link
+    - [x] Move follow form from `users/show` view into `shared/_follow_request_form`
+    - [ ] Move unfollow form from `users/show` view into `shared/_unfollow_form`
 
 ### Uncategorized Todos
 

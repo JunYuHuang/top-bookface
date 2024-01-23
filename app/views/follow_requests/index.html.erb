@@ -1,0 +1,26 @@
+<%= render "shared/header" %>
+
+<h1>Follow Requests</h1>
+
+<h2>Received Follow Requests</h2>
+<% if @received_requests.empty? %>
+  <p>None.<p>
+<% else %>
+  <ul>
+    <% @received_requests.each do |req| %>
+      <li>
+        From:&nbsp;
+        <%=
+          link_to "#{req.requester.username}", user_path(req.requester.id)
+        %>
+        <div>
+          <%# TODO - accept form %>
+          <button>Accept</button>
+          <%# TODO - reject form %>
+          <button>Reject</button>
+        </div>
+        <br>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

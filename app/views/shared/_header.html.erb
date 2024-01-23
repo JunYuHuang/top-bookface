@@ -1,12 +1,14 @@
 <header>
-  <%= link_to "📕😏 Bookface", root_path %>
+  <%= link_to "🤓 Bookface", root_path %>
   &nbsp;
   <% if user_signed_in? %>
     <%= link_to "Users", users_path %>
     &nbsp;
     <%= link_to "Profile", user_path(current_user.id) %>
     &nbsp;
-    <%= link_to "Follows", follows_path %>
+    <%= link_to "Follows", user_follows_path(current_user.id) %>
+    &nbsp;
+    <%= link_to "Follow Requests", user_follow_requests_path(current_user.id) %>
     &nbsp;
     <%= link_to(
       "Sign Out",
@@ -15,6 +17,10 @@
     ) %>
     &nbsp;
     <br>
+    <% if flash[:notice] %>
+      <br>
+      <div><%= flash[:notice] %></div>
+    <% end %>
     <br>
     <div>
       Welcome back, <%= current_user.username %>!

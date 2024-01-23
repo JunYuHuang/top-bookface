@@ -1,11 +1,14 @@
 class FollowsController < ApplicationController
   def index
-    @followees = current_user.followees
-    @followers = current_user.followers
+    @user = User.find(index_param)
+    @followees = @user.followees
+    @followers = @user.followers
   end
 
+  # TODO - to test
+  # For `Follow`s
   def create
-    @follow = Follow.new(create_follows_params)
+    @follow = Follow.new(create_params)
     is_diff_user = @follow.followee_id != @follow.follower_id
 
     if is_diff_user && @follow.save
@@ -17,6 +20,7 @@ class FollowsController < ApplicationController
     end
   end
 
+  # For `Unfollow`s
   def destroy
     @follow = Follow.find(params[:id])
     if @follow.destroy
@@ -29,7 +33,11 @@ class FollowsController < ApplicationController
 
   private
 
-  def create_follows_params
+  def index_param
+    params.require(:user_id)
+  end
+
+  def create_params
     followee_id, follower_id = params.require(
       [:followee_id, :follower_id]
     )

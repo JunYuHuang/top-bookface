@@ -18,6 +18,12 @@ class User < ApplicationRecord
   has_many(
     :followees, through: :follower_follows, class_name: "User"
   )
+  has_many(
+    :sent_follow_requests, class_name: "FollowRequest", foreign_key: "requester_id"
+  )
+  has_many(
+    :received_follow_requests, class_name: "FollowRequest", foreign_key: "requestee_id"
+  )
 
   validates(
     :username, presence: true, uniqueness: { case_sensitive: false }
@@ -55,5 +61,59 @@ class User < ApplicationRecord
     if User.where(email: username).exists?
       errors.add(:username, invalid)
     end
+  end
+
+  def is_same_user?(id)
+    self.id == id.to_i
+  end
+
+  def can_view_follow_requests?(user_id)
+    is_same_user?(user_id)
+  end
+
+  def can_send_follow_request_to?(requestee_id)
+    requestee_id = requestee_id.to_i
+    return false if is_same_user?(requestee_id)
+    return false unless User.exists?(requestee_id)
+    return false if FollowRequest.where(
+      requestee_id: requestee_id,
+      requester_id: self.id,
+    ).exists?
+    return false if Follow.where(
+      followee_id: requestee_id,
+      follower_id: self.id,
+    ).exists?
+    true
+  end
+
+  # TODO - to test
+  def can_unfollow?(args)
+    args => { requestee_id:, requester_id: }
+    return false if is_same_user?(requestee_id)
+    return false unless is_same_user?(requester_id)
+    Follow.where(
+      followee_id: requestee_id,
+      follower_id: requester_id,
+    ).exists?
+  end
+
+  # TODO - to test
+  def can_accept_follow_request?(args)
+    args => { requestee_id:, requester_id: }
+    return false if is_same_user?(requester_id)
+    return false unless is_same_user?(requestee_id)
+    return false if Follow.where(
+      followee_id: requestee_id,
+      follower_id: requester_id,
+    ).exists?
+    FollowRequest.where(
+      requestee_id: requestee_id,
+      requester_id: requester_id,
+    ).exists?
+  end
+
+  # TODO - to test
+  def can_reject_follow_request?(args)
+    can_accept_follow_request?(args)
   end
 end
