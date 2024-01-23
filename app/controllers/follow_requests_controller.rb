@@ -1,12 +1,16 @@
 class FollowRequestsController < ApplicationController
   def index
     unless current_user.can_view_follow_requests?(index_param)
-      flash[:notice] = "✋ Unauthorized to view follow requests!"
-      redirect_to root_path, status: 403
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to view follow requests!"
+      )
       return
     end
 
     @user = User.find(index_param)
+    @sent_requests = @user.sent_follow_requests
     @received_requests = @user.received_follow_requests
   end
 
