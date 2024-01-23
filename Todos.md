@@ -116,7 +116,7 @@
   - [ ] DELETE `/users/:user_id/follow_requests/:id`
 - [ ] Add `FollowRequest` views
   - [ ] `users/:user_id/follow_requests/index`
-    - [ ] shows a list of all the sent follow requests from the sign-in user
+    - [x] shows a list of all users that the user with id `:user_id` sent follow requests to
     - [x] shows a list of all the users that sent a follow request to the user with id `:user_id`
     - [ ] accept request form per shown user
     - [ ] reject request form per shown user
