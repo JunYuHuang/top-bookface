@@ -14,6 +14,7 @@ class FollowRequestsController < ApplicationController
     @received_requests = @user.received_follow_requests
   end
 
+  # Send follow request
   def create
     create_params => { requestee_id:, requester_id: }
     unless current_user.can_send_follow_request_to?(requestee_id)
@@ -44,42 +45,34 @@ class FollowRequestsController < ApplicationController
     end
   end
 
+  # Reject follow request
   def destroy
-    delete_params => { id:, is_accepted: }
-    return unless FollowRequest.exists?(id: id)
-
-    @follow_request = FollowRequest.find(id)
-    is_following = Follow.where([
-      "followee_id = :followee_id and follower_id = :follower_id",
-      {
-        followee_id: @follow_request.requestee_id,
-        follower_id: @follow_request.requester_id
-      }
-    ]).exists?
-    return if is_following
-
-    # TODO - make accept request run as a SQL transaction to
-    # create the follow and then delete the follow request
-    if is_accepted
-      @follow = Follow.new(
-        followee_id: @follow_request.requestee_id,
-        follower_id: @follow_request.requester_id
+    # TODO - to test
+    unless current_user.can_reject_follow_request?(destroy_params)
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to reject follow request!"
       )
-      if @follow.save
-        puts("Created follow with id #{@follow.id}!")
-      else
-        puts("Failed to create follow with id #{@follow.id}!")
-        render :index, status: :unprocessable_entity
-        return
-      end
+      return
     end
 
+    @follow_request = FollowRequest.find_by(destroy_params)
     if @follow_request.destroy
-      puts("Deleted follow request with id #{id}!")
-      redirect_back_or_to root_path
+      puts("Deleted follow request with id #{@follow_request.id}!")
+      redirect_back_or_to(
+        root_path,
+        status: 303,
+        notice: "✅ Rejected follow request"
+      )
+    # TODO - to test
     else
       puts("Failed to delete follow request with id #{@follow_request.id}!")
-      render :index, status: :unprocessable_entity
+      redirect_back_or_to(
+        root_path,
+        status: 422,
+        notice: "💥 Failed to reject follow request!"
+      )
     end
   end
 
@@ -90,16 +83,13 @@ class FollowRequestsController < ApplicationController
   end
 
   def create_params
-    user_id, requestee_id, requester_id = params.require(
-      [:user_id, :requestee_id, :requester_id]
+    requestee_id, requester_id = params.require(
+      [:requestee_id, :requester_id]
     )
     { requestee_id: requestee_id, requester_id: requester_id }
   end
 
-  # use values "1" and "0" to represent boolean values true
-  # and false for param `is_accepted` in the DELETE form
-  def delete_params
-    id, is_accepted = params.require([:id, :is_accepted])
-    { id: id, is_accepted: is_accepted == "1"}
+  def destroy_params
+    create_params
   end
 end

@@ -71,6 +71,7 @@ class User < ApplicationRecord
     is_same_user?(user_id)
   end
 
+  # TODO - update params to take in hash with `requestee_id` and `requester_id` key-value pairs
   def can_send_follow_request_to?(requestee_id)
     requestee_id = requestee_id.to_i
     return false if is_same_user?(requestee_id)
@@ -97,7 +98,6 @@ class User < ApplicationRecord
     ).exists?
   end
 
-  # TODO - to test
   def can_accept_follow_request?(args)
     args => { requestee_id:, requester_id: }
     return false if is_same_user?(requester_id)
@@ -112,7 +112,6 @@ class User < ApplicationRecord
     ).exists?
   end
 
-  # TODO - to test
   def can_reject_follow_request?(args)
     can_accept_follow_request?(args)
   end

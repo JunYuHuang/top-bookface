@@ -33,8 +33,16 @@
         <div>
           <%# TODO - accept form %>
           <button>Accept</button>
-          <%# TODO - reject form %>
-          <button>Reject</button>
+          <%=
+            render(
+              partial: "reject_form",
+              locals: {
+                random_id: 999,
+                requestee_id: req.requestee_id,
+                requester_id: req.requester.id
+              }
+            )
+          %>
         </div>
         <br>
       </li>
