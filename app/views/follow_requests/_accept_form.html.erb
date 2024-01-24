@@ -1,0 +1,10 @@
+<%# Query parameter `:user_id` does not matter because only the hidden input values are used to create a follow. %>
+<%=
+  form_with(
+    url: user_follows_path(random_id), method: :post
+  ) do |form|
+%>
+  <%= form.hidden_field :requestee_id, value: requestee_id %>
+  <%= form.hidden_field :requester_id, value: requester_id %>
+  <%= form.submit "Accept" %>
+<% end %>

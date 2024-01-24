@@ -88,15 +88,15 @@
   - [x] Index and add unique constraint to columns `requestee_id` and `requester_id`
   - [x] Set FKs that point to `users` tables
 - [x] Set up association(s) so `User` model can access follow requesters (optional)
-- [ ] Update `Follow` controller
+- [x] Update `Follow` controller
   - [x] `#index` (see follows and followers)
-  - [ ] `#create` (accept follow + delete follow request)
-    - [ ] if signed-in user is unauthorized, redirect with unauthorized message
+  - [x] `#create` (accept follow + delete follow request)
+    - [x] if signed-in user is unauthorized, redirect with unauthorized message
   - [x] `#destroy` (unfollow)
     - [x] if signed-in user is unauthorized, redirect with unauthorized message
-- [ ] Update `Follow` routes
+- [x] Update `Follow` routes
   - [x] GET `/users/:user_id/follows`
-  - [ ] POST `/users/:user_id/follows`
+  - [x] POST `/users/:user_id/follows`
   - [x] DELETE `/users/:user_id/follows/:id`
 - [x] Update `Follow` views
   - [x] `/users/:user_id/follows/index`
@@ -112,11 +112,11 @@
   - [x] GET `/users/:user_id/follow_requests`
   - [x] POST `/users/:user_id/follow_requests`
   - [x] DELETE `/users/:user_id/follow_requests/:id`
-- [ ] Add `FollowRequest` views
-  - [ ] `users/:user_id/follow_requests/index`
+- [x] Add `FollowRequest` views
+  - [x] `users/:user_id/follow_requests/index`
     - [x] shows a list of all users that the user with id `:user_id` sent follow requests to
     - [x] shows a list of all the users that sent a follow request to the user with id `:user_id`
-    - [ ] accept request form per shown user
+    - [x] accept request form per shown user
     - [x] reject request form per shown user
 - [x] Update `User` model
   - [x] Add `is_same_user?` helper method
@@ -126,12 +126,12 @@
   - [x] Add `can_unfollow?` helper method
   - [x] Add `can_reject_follow_request?` helper method
 - [ ] Update `User` views
-  - [x] `users/:id/show`
+  - [x] `users/show`
     - [x] use `shared/_follow_request_form` partial view
     - [x] use `shared/_unfollow_form` partial view
   - [ ] `users/index`
     - [ ] follow request form for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
-- [ ] Update `shared` views
+- [x] Update `shared` views
   - [x] `shared/_header`
     - [x] Update `Follow Requests` link
     - [x] Move follow form from `users/show` view into `shared/_follow_request_form`
