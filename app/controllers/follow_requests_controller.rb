@@ -16,8 +16,7 @@ class FollowRequestsController < ApplicationController
 
   # Send follow request
   def create
-    create_params => { requestee_id:, requester_id: }
-    unless current_user.can_send_follow_request_to?(requestee_id)
+    unless current_user.can_send_follow_request?(create_params)
       redirect_to(
         root_path,
         status: 403,

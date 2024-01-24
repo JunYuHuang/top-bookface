@@ -121,7 +121,7 @@
 - [x] Update `User` model
   - [x] Add `is_same_user?` helper method
   - [x] Add `can_view_follow_requests?` helper method
-  - [x] Add `can_send_follow_request_to?` helper method
+  - [x] Add `can_send_follow_request?` helper method
   - [x] Add `can_accept_follow_request?` helper method
   - [x] Add `can_unfollow?` helper method
   - [x] Add `can_reject_follow_request?` helper method
