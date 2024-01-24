@@ -13,6 +13,20 @@
             user_path(user.id)
           )
         %>
+
+        <% if current_user.can_follow?(user.id) %>
+          <%=
+            render(
+              partial: "shared/follow_request_form",
+              locals: {
+                requestee_id: user.id, requester_id: current_user.id
+              }
+            )
+          %>
+        <% else %>
+          <br>
+        <% end %>
+        <br>
       </li>
     <% end %>
   </ul>

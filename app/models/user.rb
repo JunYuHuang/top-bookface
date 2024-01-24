@@ -86,6 +86,26 @@ class User < ApplicationRecord
     ).exists?
   end
 
+  def can_follow?(user_id)
+    return false if is_same_user?(user_id)
+    return false if Follow.where(
+      followee_id: user_id,
+      follower_id: self.id,
+    ).exists?
+    !FollowRequest.where(
+      requestee_id: user_id,
+      requester_id: self.id,
+    ).exists?
+  end
+
+  # TODO - replace `#can_follow?` with a method that returns a list of followable user id's whilst minimizing DB calls (prevent N+1 query problem)
+  def followable_user_ids
+    # `all_ids` = list of all `users.id` in `users` table not equal to `self.id`
+    # filter out all `id`'s from `all_ids` for all `follows` rows where `follows.follower_id` equals `self.id`
+    # filter out all `id`'s from `all_ids` for all `follow_requests` rows where `follow_requests.requester_id` equals `self.id`
+    # return `all_ids` as a set
+  end
+
   def can_unfollow?(args)
     args => { followee_id:, follower_id: }
     return false if is_same_user?(followee_id)

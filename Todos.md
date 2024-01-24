@@ -5,7 +5,7 @@
 - [x] Point 1 (config app with PostgreSQL)
 - [x] Point 2 (users must be logged in to access any pages)
 - [x] Point 3 (do user auth with Devise gem)
-- [ ] Point 4 (build basic user follows system + follow request system)
+- [x] Point 4 (build basic user follows system + follow request system)
 - [ ] Point 5 (build posts system)
 - [ ] Point 6 (build post likes system)
 - [ ] Point 7 (build post comments system)
@@ -13,7 +13,7 @@
 - [ ] Point 9 (posts index page)
 - [ ] Point 10 (user has profile picture)
 - [ ] Point 11 (user detail / profile page)
-- [ ] Point 12 (users index page)
+- [x] Point 12 (users index page)
 - [ ] Point 13 (email new users who sign up)
 - [ ] Point 14 (deploy app)
 - [ ] Point 15 (set up email provider to send real emails)
@@ -125,17 +125,23 @@
   - [x] Add `can_accept_follow_request?` helper method
   - [x] Add `can_unfollow?` helper method
   - [x] Add `can_reject_follow_request?` helper method
-- [ ] Update `User` views
+- [x] Update `User` views
   - [x] `users/show`
     - [x] use `shared/_follow_request_form` partial view
     - [x] use `shared/_unfollow_form` partial view
-  - [ ] `users/index`
-    - [ ] follow request form for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
+  - [x] `users/index`
+    - [x] follow request form for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
 - [x] Update `shared` views
   - [x] `shared/_header`
     - [x] Update `Follow Requests` link
     - [x] Move follow form from `users/show` view into `shared/_follow_request_form`
     - [x] Move unfollow form from `users/show` view into `shared/_unfollow_form`
+
+### Database Optimisation Todos
+
+- [ ] Find and fix N + 1 queries
+  - [ ] Checking if the signed-in user can send a follow request to each user in the `users` table.
+  - [ ] TODO
 
 ### Uncategorized Todos
 
