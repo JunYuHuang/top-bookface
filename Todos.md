@@ -91,15 +91,13 @@
 - [ ] Update `Follow` controller
   - [x] `#index` (see follows and followers)
   - [ ] `#create` (accept follow + delete follow request)
-    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
-  - [ ] `#destroy` (unfollow)
-    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
-- [x] Update `Follow` routes
+    - [ ] if signed-in user is unauthorized, redirect with unauthorized message
+  - [x] `#destroy` (unfollow)
+    - [x] if signed-in user is unauthorized, redirect with unauthorized message
+- [ ] Update `Follow` routes
   - [x] GET `/users/:user_id/follows`
   - [ ] POST `/users/:user_id/follows`
-    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
-  - [ ] DELETE `/users/:user_id/follows/:id`
-    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+  - [x] DELETE `/users/:user_id/follows/:id`
 - [x] Update `Follow` views
   - [x] `/users/:user_id/follows/index`
     - [x] show followees and followers for user with id `:user_id`
@@ -108,8 +106,8 @@
     - [x] if signed-in user does not have id `:user_id`, redirect to index page b/c user is not authorized to see them
   - [x] `#create` (send follow request)
     - [x] if signed-in user is unauthorized, redirect to root
-  - [x] `#destroy` (reject follow request)
-    - [x] if signed-in user is unauthorized, redirect with unauthorized message
+  - [ ] `#destroy` (reject follow request)
+    - [ ] if signed-in user is unauthorized, redirect with unauthorized message
 - [ ] Add `FollowRequest` routes
   - [x] GET `/users/:user_id/follow_requests`
   - [x] POST `/users/:user_id/follow_requests`
