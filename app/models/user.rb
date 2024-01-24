@@ -86,14 +86,14 @@ class User < ApplicationRecord
     true
   end
 
-  # TODO - to test
   def can_unfollow?(args)
-    args => { requestee_id:, requester_id: }
-    return false if is_same_user?(requestee_id)
-    return false unless is_same_user?(requester_id)
+    args => { followee_id:, follower_id: }
+    return false if is_same_user?(followee_id)
+    return false unless is_same_user?(follower_id)
+    return false unless User.exists?(followee_id)
     Follow.where(
-      followee_id: requestee_id,
-      follower_id: requester_id,
+      followee_id: followee_id,
+      follower_id: self.id,
     ).exists?
   end
 

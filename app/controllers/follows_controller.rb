@@ -22,13 +22,33 @@ class FollowsController < ApplicationController
 
   # For `Unfollow`s
   def destroy
-    @follow = Follow.find(params[:id])
-    if @follow.destroy
-      puts("Deleted follow with id #{params[:id]}!")
-      redirect_back_or_to root_path
+    # TODO - to test
+    unless current_user.can_unfollow?(delete_params)
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to unfollow!"
+      )
       return
     end
-    puts("Failed to delete follow with id #{params[:id]}")
+
+    @follow = Follow.find_by(delete_params)
+    if @follow.destroy
+      puts("Deleted follow with id #{@follow.id}!")
+      redirect_back_or_to(
+        root_path,
+        status: 303,
+        notice: "✅ Unfollowed '#{@follow.followee.username}'"
+      )
+    # TODO - to test
+    else
+      puts("Failed to delete follow with id #{@follow.id}!")
+      redirect_back_or_to(
+        root_path,
+        status: 422,
+        notice: "💥 Failed to unfollow '#{@follow.followee.username}'!"
+      )
+    end
   end
 
   private
@@ -42,5 +62,9 @@ class FollowsController < ApplicationController
       [:followee_id, :follower_id]
     )
     { followee_id: followee_id, follower_id: follower_id }
+  end
+
+  def delete_params
+    create_params
   end
 end

@@ -1,5 +1,12 @@
 <%# TODO - to test %>
-<%# Does not matter which `User.id` is passed as the query parameter because only the hidden input values are used to create a follow request. %>
-<%= form_with url: user_follow_path(user_id, follow_id), method: :delete do |form| %>
+<%# Query parameters `:user_id` and `:id` do not matter because only the hidden input values are used to delete a follow request. %>
+<%=
+  form_with(
+    url: user_follow_path(random_id, random_id),
+    method: :delete
+  ) do |form|
+%>
+  <%= form.hidden_field :followee_id, value: followee_id %>
+  <%= form.hidden_field :follower_id, value: follower_id %>
   <%= form.submit "Unfollow" %>
 <% end %>

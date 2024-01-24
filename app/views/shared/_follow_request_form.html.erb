@@ -1,5 +1,4 @@
-<%# TODO - to test %>
-<%# Does not matter which `User.id` is passed as the query parameter because only the hidden input values are used to create a follow request. %>
+<%# Query parameter `:user_id` does not matter because only the hidden input values are used to create a follow request. %>
 <%= form_with url: user_follow_requests_path(requester_id), method: :post do |form| %>
   <%= form.hidden_field :requestee_id, value: requestee_id %>
   <%= form.hidden_field :requester_id, value: requester_id %>

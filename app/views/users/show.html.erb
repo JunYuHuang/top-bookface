@@ -5,14 +5,29 @@
   <%= @user.username %>
   <%= @is_same_user ? " (You)" : "" %>
 </h1>
-<%# TODO - rework below %>
 
-<%# if can follow, show follow (request) form %>
 <% if @can_follow %>
-  <%= render partial: "shared/follow_request_form", locals: {
-    requestee_id: @user.id, requester_id: current_user.id
-  } %>
+  <%=
+    render(
+      partial: "shared/follow_request_form",
+      locals: {
+        requestee_id: @user.id, requester_id: current_user.id
+      }
+    )
+  %>
 <% end %>
 
-<%# if can unfollow, show unfollow form %>
+<% if @can_unfollow %>
+  <%=
+    render(
+      partial: "shared/unfollow_form",
+      locals: {
+        random_id: 999,
+        followee_id: @user.id,
+        follower_id: current_user.id
+      }
+    )
+  %>
+<% end %>
+
 <p>User profile body</p>

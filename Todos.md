@@ -108,8 +108,8 @@
     - [x] if signed-in user does not have id `:user_id`, redirect to index page b/c user is not authorized to see them
   - [x] `#create` (send follow request)
     - [x] if signed-in user is unauthorized, redirect to root
-  - [ ] `#destroy` (reject follow request)
-    - [ ] if signed-in user is unauthorized, refresh page with unauthorized message
+  - [x] `#destroy` (reject follow request)
+    - [x] if signed-in user is unauthorized, redirect with unauthorized message
 - [ ] Add `FollowRequest` routes
   - [x] GET `/users/:user_id/follow_requests`
   - [x] POST `/users/:user_id/follow_requests`
@@ -123,20 +123,21 @@
 - [ ] Update `User` model
   - [x] Add `is_same_user?` helper method
   - [x] Add `can_view_follow_requests?` helper method
-  - [x] Add `can_send_follow_request?` helper method
+  - [x] Add `can_send_follow_request_to?` helper method
   - [ ] Add `can_accept_follow_request?` helper method
-  - [ ] Add `can_unfollow?` helper method (optional)
-  - [ ] Add `can_reject_follow_request?` (optional)
+  - [x] Add `can_unfollow?` helper method
+  - [ ] Add `can_reject_follow_request?`
 - [ ] Update `User` views
-  - [ ] `users/:id/show`
-    - [ ] use `_follow_request_form` and `_unfollow_form` view partials from `/shared`
+  - [x] `users/:id/show`
+    - [x] use `shared/_follow_request_form` partial view
+    - [x] use `shared/_unfollow_form` partial view
   - [ ] `users/`
     - [ ] follow request form for all users that are not the signed-in user, that the signed-in user is not following, that the signed-in user has sent a follow request that has been rejected
 - [ ] Update `shared` views
   - [x] `shared/_header`
     - [x] Update `Follow Requests` link
     - [x] Move follow form from `users/show` view into `shared/_follow_request_form`
-    - [ ] Move unfollow form from `users/show` view into `shared/_unfollow_form`
+    - [x] Move unfollow form from `users/show` view into `shared/_unfollow_form`
 
 ### Uncategorized Todos
 
