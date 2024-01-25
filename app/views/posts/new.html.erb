@@ -1,4 +1,9 @@
 <%= render "shared/header" %>
 
-<h1>Posts#new</h1>
-<p>Find me in app/views/posts/new.html.erb</p>
+<h1>New Post</h1>
+<%=
+  render(
+    partial: "form",
+    locals: { post: @post, submit_name: "Create" }
+  )
+%>

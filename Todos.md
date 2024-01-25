@@ -176,15 +176,15 @@ Basic posts index and detail pages.
 
 Create Post feature.
 
-- [ ] Update `User` model
-  - [ ] `#can_create_post?`
-- [ ] Update `Posts` controller
-  - [ ] `#create` (create post if authorized else redirect)
-  - [ ] `#new` (show new page)
-- [ ] Update or add `Post` views
-  - [ ] `/posts/index` to have a `Create Post` button
-  - [ ] `/posts/new` view
-  - [ ] `/posts/_form` partial view
+- [ ] ~~Update `User` model~~
+  - [ ] ~~`#can_create_post?`~~
+- [x] Update `Posts` controller
+  - [x] `#create` (create post if authorized else redirect)
+  - [x] `#new` (show new page)
+- [x] Update or add `Post` views
+  - [x] `/posts/index` to have a `New Post` button
+  - [x] `/posts/new` view
+  - [x] `/posts/_form` partial view
 
 ### Post System - Part 4 Todos
 
