@@ -110,6 +110,98 @@ Constraint(s):
 - A `follow_requests` record `frA` does not exist if there IS a `follows` record that indicates user `uA` is following user `uB`.
 - User `uA` can create 0 or 1 `follow_requests` record(s) at most for each followee that they want to follow.
 
+### `Post` Subsystem Specs
+
+Definition(s):
+
+- Assumes the `User` Subsystem exists.
+- Any user is registered and signed in while they are using the app.
+- Users `uA` and `uB` are distinct users.
+- Post `pA` is a post authored by user `uA`.
+- The `Post` model is represented by the `posts` database table.
+- A post is associated with one user (author).
+- For a post `pA` to be authored by user `uA` means:
+  - There is a `posts` record `pA` where its `author_id` field matches user `uA`'s `id` field.
+
+Constraint(s):
+
+- Any post is authored at most by one user.
+- Any post is viewable by all users.
+- Any user can create, edit, and delete their authored posts.
+- Any user cannot edit or delete posts not authored by themselves.
+- User `uA` cannot create a post `pB` on behalf of user `uB`; `uA` cannot trigger the creation of a post `pB` record whose `author_id` field matches user `uB`'s `id` field.
+
+### `Like` Subsystem Specs
+
+Definition(s):
+
+- Assumes the `User` Subsystem exists.
+- Assumes the `Post` Subsystem exists.
+- Any user is registered and signed in while they are using the app.
+- Users `uA` and `uB` are distinct users.
+- Post `pA` is a post authored by user `uA`.
+- The `Like` model is represented by the `likes` database table.
+- Like `lA` is a like created by user `uA` on the post `pA`.
+- A like is associated with one user and one post.
+- For user `uA` to "like" a post `pA` means:
+  - There is NO `likes` record `lA`
+    - whose `liker_id` field matches user `uA`'s `id` field
+    - whose `post_id` field matches post `pA`'s `id` field
+  - Create the `likes` record `lA` that indicates that user `uA` liked post `pA`.
+- For user `uA` to "unlike" a post `pA` means:
+  - There IS a `likes` record `lA`
+    - whose `liker_id` field matches user `uA`'s `id` field
+    - whose `post_id` field matches post `pA`'s `id` field
+  - Delete the `likes` record `lA` that indicates that user `uA` liked post `pA`.
+
+Constraint(s):
+
+- Only posts are likeable or unlikeable.
+- A user can like or unlike a post.
+- Any like is viewable by any user.
+- Any post can be liked by each user at most 0 or 1 time(s).
+- Any post can be liked by its own author.
+- A user can like or unlike multiple, distinct posts.
+- A user cannot like a post that they have already liked.
+- A user cannot unlike a post that they have not liked yet.
+- A user cannot like a post on behalf of another user.
+- A user cannot unlike a post on behalf of another user.
+
+### `Comment` Subsystem Specs
+
+Definition(s):
+
+- Assumes the `User` Subsystem exists.
+- Assumes the `Post` Subsystem exists.
+- Any user is registered and signed in while they are using the app.
+- Users `uA` and `uB` are distinct users.
+- Post `pA` is a post authored by user `uA`.
+- The `Comment` model is represented by the `comments` database table.
+- Comment `cA` is a comment authored by user `uA` on the post `pA`.
+- A comment is associated with one user (author) and one post.
+- For a comment `cA` to be authored by user `uA` means:
+  - There is a `comments` record `cA` where its `author_id` field matches user `uA`'s `id` field.
+
+Constraint(s):
+
+- Only posts are commentable.
+- Any user can comment on any post.
+- Any user can comment on multiple, distinct posts.
+- Any user can comment multiple times on the same post.
+- Any comment is viewable by any user.
+- Any comment can be edited or deleted only by its author.
+- A user cannot comment on a post on behalf of another user.
+
+### `User` Subsystem - Profile Update Specs
+
+Definition(s):
+
+- TODO
+
+Constraint(s):
+
+- TODO
+
 ## User Workflows
 
 ### User Registration
@@ -351,13 +443,13 @@ has_many likes
 
 ```
 post_id:integer [present] (FK of `Post.id`)
-user_id:integer [present] (FK of `User.id`)
+liker_id:integer [present] (FK of `User.id`)
 id:integer
 created_at:datetime
 updated_at:datetime
 
 belongs_to post
-belongs_to user
+belongs_to liker (user)
 ```
 
 ### `Comment` Model
