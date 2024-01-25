@@ -161,13 +161,16 @@ Create initial `Post` MVC.
 
 Basic posts index and detail pages.
 
-- [ ] Update `Posts` controller
-  - [ ] `#index`
-  - [ ] `#show`
-- [ ] Update or add `Post` views
-  - [ ] `/posts/index`
-  - [ ] `/posts/show` that shows the post's:
-    - [ ] body
+- [x] Update `Posts` controller
+  - [x] `#index`
+  - [x] `#show`
+- [x] Update or add `Post` views
+  - [x] `/posts/index`
+  - [x] `/posts/show` that shows:
+    - [x] post body
+    - [x] post author's username
+    - [x] post create date
+    - [x] post last update date
 
 ### Post System - Part 3 Todos
 
