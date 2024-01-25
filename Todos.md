@@ -137,6 +137,82 @@
     - [x] Move follow form from `users/show` view into `shared/_follow_request_form`
     - [x] Move unfollow form from `users/show` view into `shared/_unfollow_form`
 
+### Post System - Part 1 Todos
+
+Create `Post` model and controller.
+
+- [ ] Run Rails generator to create `Post` model
+- [ ] Update new database migration script to set up indices and foreign keys
+- [ ] Add associations to `Post` model
+- [ ] Add associations to `User` model
+- [ ] Run Rails generator to create `Posts` controller and views for the following routes:
+  - GET `/posts` (`#index`)
+  - POST `/posts` (`#create`)
+  - GET `/posts/:id` (`#show`)
+  - GET `/posts/new` (`#new`)
+  - PUT `/posts/:id` (`#update`)
+  - GET `/posts/:id/edit` (`#edit`)
+  - DELETE `/posts/:id/delete` (`#destroy`)
+- [ ] Add `Posts` link to `/shared/_header` partial view
+
+### Post System - Part 2 Todos
+
+Basic posts index and detail pages.
+
+- [ ] Update `Posts` controller
+  - [ ] `#index`
+  - [ ] `#show`
+- [ ] Update or add `Post` views
+  - [ ] `/posts/index`
+  - [ ] `/posts/show` that shows the post's:
+    - [ ] body
+
+### Post System - Part 3 Todos
+
+Create Post feature.
+
+- [ ] Update `User` model
+  - [ ] `#can_create_post?`
+- [ ] Update `Posts` controller
+  - [ ] `#create` (create post if authorized else redirect)
+  - [ ] `#new` (show new page)
+- [ ] Update or add `Post` views
+  - [ ] `/posts/index` to have a `Create Post` button
+  - [ ] `/posts/new` view
+  - [ ] `/posts/_form` partial view
+
+### Post System - Part 4 Todos
+
+Edit Post feature.
+
+- [ ] Update `User` model
+  - [ ] `#can_edit_post?`
+- [ ] Update `Posts` controller
+  - [ ] `#update` (update post if authorized else redirect)
+  - [ ] `#edit` (show edit page)
+- [ ] Update or add `Post` views
+  - [ ] `/posts/show` to show an `Edit Post` link if signed-in user is the author of the post
+  - [ ] `/posts/edit` view to reuse `/posts/_form` partial view
+
+### Post System - Part 5 Todos
+
+Delete Post feature.
+
+- [ ] Update `User` model
+  - [ ] `#can_delete_post?`
+- [ ] Update `Posts` controller
+  - [ ] `#destroy` (delete post if authorized else redirect)
+- [ ] Update or add `Post` views
+  - [ ] `/posts/show` to show an `Delete Post` link if signed-in user is the author of the post
+
+### Post System - Part 6 Todos
+
+Update posts index page.
+
+- [ ] Update `/posts/index` view
+  - [ ] Only show list of posts authored by the signed-in user and all users followed by the signed-in user
+  - [ ] Each post displayed should be its title as a clickable link
+
 ### Database Optimisation Todos
 
 - [ ] Find and fix N + 1 queries
