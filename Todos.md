@@ -139,21 +139,23 @@
 
 ### Post System - Part 1 Todos
 
-Create `Post` model and controller.
+Create initial `Post` MVC.
 
-- [ ] Run Rails generator to create `Post` model
-- [ ] Update new database migration script to set up indices and foreign keys
-- [ ] Add associations to `Post` model
-- [ ] Add associations to `User` model
-- [ ] Run Rails generator to create `Posts` controller and views for the following routes:
-  - GET `/posts` (`#index`)
-  - POST `/posts` (`#create`)
-  - GET `/posts/:id` (`#show`)
-  - GET `/posts/new` (`#new`)
-  - PUT `/posts/:id` (`#update`)
-  - GET `/posts/:id/edit` (`#edit`)
-  - DELETE `/posts/:id/delete` (`#destroy`)
-- [ ] Add `Posts` link to `/shared/_header` partial view
+- [x] Run Rails generator to create `Post` model
+- [x] Update new database migration script to set up indices and foreign keys
+- [x] Add associations to `Post` model
+- [x] Add associations to `User` model
+- [x] Run Rails generator to create `Posts` controller and views for the following routes:
+  - [x] GET `/posts` (`#index`)
+  - [x] POST `/posts` (`#create`)
+  - [x] GET `/posts/:id` (`#show`)
+  - [x] GET `/posts/new` (`#new`)
+  - [x] PUT `/posts/:id` (`#update`)
+  - [x] GET `/posts/:id/edit` (`#edit`)
+  - [x] DELETE `/posts/:id/delete` (`#destroy`)
+- [x] Update `/shared/_header` partial view
+  - [x] Add `Posts` link
+- [x] Make `/posts` the root path in routes
 
 ### Post System - Part 2 Todos
 
