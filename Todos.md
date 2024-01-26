@@ -6,11 +6,11 @@
 - [x] Point 2 (users must be logged in to access any pages)
 - [x] Point 3 (do user auth with Devise gem)
 - [x] Point 4 (build basic user follows system + follow request system)
-- [ ] Point 5 (build posts system)
+- [x] Point 5 (build posts system)
 - [ ] Point 6 (build post likes system)
 - [ ] Point 7 (build post comments system)
 - [ ] Point 8 (post detail page)
-- [ ] Point 9 (posts index page)
+- [x] Point 9 (posts index page)
 - [ ] Point 10 (user has profile picture)
 - [ ] Point 11 (user detail / profile page)
 - [x] Point 12 (users index page)
@@ -216,9 +216,12 @@ Delete Post feature.
 
 Update posts index page.
 
-- [ ] Update `/posts/index` view
-  - [ ] Only show list of posts authored by the signed-in user and all users followed by the signed-in user
-  - [ ] Each post displayed should be its title as a clickable link
+- [x] Update `posts/index` view
+  - [x] Only show list of posts authored by the signed-in user and all users followed by the signed-in user by default
+  - [x] List of posts should be ordered by descending (latest) date of when the post was created (`created_at`)
+  - [x] Each post displayed should be its title as a clickable link
+- [x] Update `shared/_header` partial view
+  - [x] Update `Posts` link to go to index page but shows all posts
 
 ### Database Optimisation Todos
 

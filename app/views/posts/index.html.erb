@@ -1,6 +1,9 @@
 <%= render "shared/header" %>
 
-<h1>Posts</h1>
+<h1>
+  Posts
+  <%= @is_followed_posts_only ? " (Followed Only)" : " (All)" %>
+</h1>
 <p><%= link_to "New Post", new_post_path %><p>
 
 <% if @posts.empty? %>

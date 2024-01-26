@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
+    @is_followed_posts_only = index_param[:all].nil?
+
+    if @is_followed_posts_only
+      followed_ids = current_user.followees.pluck(:id)
+      followed_ids.push(current_user.id)
+      @posts = Post
+        .where(author_id: followed_ids)
+        .order(created_at: :desc)
+    end
   end
 
   def show
@@ -99,6 +108,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def index_param
+    params.permit(:all)
+  end
 
   def create_params
     params.require(:post).permit(:body)

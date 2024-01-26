@@ -2,7 +2,7 @@
   <%= link_to "🤓 Bookface", root_path %>
   &nbsp;
   <% if user_signed_in? %>
-    <%= link_to "Posts", posts_path %>
+    <%= link_to "Posts", "#{posts_path}?all=1" %>
     &nbsp;
     <%= link_to "Follows", user_follows_path(current_user.id) %>
     &nbsp;
