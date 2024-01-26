@@ -25,6 +25,7 @@ class User < ApplicationRecord
     :received_follow_requests, class_name: "FollowRequest", foreign_key: "requestee_id"
   )
   has_many :posts, foreign_key: "author_id"
+  has_many :likes, foreign_key: "liker_id"
 
   validates(
     :username, presence: true, uniqueness: { case_sensitive: false }

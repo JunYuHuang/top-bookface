@@ -12,5 +12,7 @@ Rails.application.routes.draw do
     only: [:index, :show, :create, :new, :update, :edit, :destroy]
   )
 
+  resources :likes, only: [:create, :destroy]
+
   root "posts#index"
 end

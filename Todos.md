@@ -227,16 +227,25 @@ Update posts index page.
 
 Create initial `Like` MVC.
 
-- [ ] Run Rails generator to create `Like` model
-- [ ] Update new database migration script to set up indices and foreign keys
-- [ ] Add associations to `Like` model
-- [ ] Add associations to `User` model
-- [ ] Add associations to `Post` model
-- [ ] Run Rails generator to create `Likes` controller for the following routes:
-  - [ ] POST `/likes` (`#create`)
-  - [ ] DELETE `/likes/:id/delete` (`#destroy`)
+- [x] Run Rails generator to create `Like` model
+- [x] Update and run new database migration script to set up indices and foreign keys
+- [x] Add associations to `Like` model
+- [x] Add associations to `User` model
+- [x] Add associations to `Post` model
+- [x] Run Rails generator to create `Likes` controller for the following routes:
+  - [x] POST `/likes` (`#create`)
+  - [x] DELETE `/likes/:id` (`#destroy`)
 
 ### Like System - Part 2 Todos
+
+Show like counter on post show page.
+
+- [ ] Update `Posts` controller
+  - [ ] `#show` (fetch count of likes)
+- [ ] Update `Posts` views
+  - [ ] `posts/show` (show count of likes)
+
+### Like System - Part 3 Todos
 
 Like post feature.
 
@@ -247,7 +256,7 @@ Like post feature.
 - [ ] Add `Shared` partial views
   - [ ] `shared/_like_form` view
 
-### Like System - Part 3 Todos
+### Like System - Part 4 Todos
 
 Unlike post feature.
 
