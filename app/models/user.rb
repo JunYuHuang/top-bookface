@@ -144,4 +144,9 @@ class User < ApplicationRecord
   def can_delete_post?(post_id)
     can_edit_post?(post_id)
   end
+
+  def can_like_post?(post_id)
+    return false unless Post.exists?(post_id)
+    !Like.where(post_id: post_id, liker_id: self.id).exists?
+  end
 end

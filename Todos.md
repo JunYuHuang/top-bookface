@@ -249,12 +249,16 @@ Show like counter on post show page.
 
 Like post feature.
 
-- [ ] Update `User` model
-  - [ ] `#can_like_post?`
-- [ ] Update `Likes` controller
-  - [ ] `#create` (create like)
-- [ ] Add `Shared` partial views
-  - [ ] `shared/_like_form` view
+- [x] Update `User` model
+  - [x] `#can_like_post?`
+- [x] Update `Likes` controller
+  - [x] `#create` (create like)
+- [x] Add `Shared` partial views
+  - [x] `shared/_like_form` view
+- [x] Update `Post` controller
+  - [x] `#show` (check if signed-in user can like post)
+- [x] Update `Post` views
+  - [x] `posts/show` (show like form / button)
 
 ### Like System - Part 4 Todos
 

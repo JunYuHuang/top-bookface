@@ -3,6 +3,16 @@
 <h1>Post: <%= @post.id %></h1>
 <p><%= @post.body %></p>
 
+<% if @can_like %>
+  <%=
+    render(
+      partial: "shared/like_form", locals: { post_id: @post.id }
+    )
+  %>
+<% end %>
+
+<br>
+
 <% if @can_edit %>
   <%= link_to "Edit", edit_post_path(@post.id) %>
 <% end %>

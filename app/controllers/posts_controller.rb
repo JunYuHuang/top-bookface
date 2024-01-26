@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     @can_edit = current_user.can_edit_post?(params[:id])
     @can_delete = current_user.can_delete_post?(params[:id])
     @likes_count = Like.where(post_id: params[:id]).count
+    @can_like = current_user.can_like_post?(params[:id])
   end
 
   def create

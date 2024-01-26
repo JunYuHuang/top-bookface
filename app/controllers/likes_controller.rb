@@ -1,6 +1,31 @@
 class LikesController < ApplicationController
   def create
-    # TODO
+    unless current_user.can_like_post?(like_param)
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to like post!"
+      )
+      return
+    end
+
+    @like = current_user.likes.build(post_id: like_param.to_i)
+
+    if @like.save
+      puts("Liked post #{@like}")
+      redirect_back_or_to(
+        post_path(like_param),
+        status: 303,
+        notice: "✅ Liked post"
+      )
+    else
+      puts("Failed to liked post #{@like}!")
+      redirect_back_or_to(
+        post_path(like_param),
+        status: 422,
+        notice: "💥 Failed to like post!"
+      )
+    end
   end
 
   def destroy
@@ -9,8 +34,7 @@ class LikesController < ApplicationController
 
   private
 
-  def like_params
-    params.require([:post_id, :liker_id])
-    { post_id: post_id, liker_id: liker_id }
+  def like_param
+    params.require(:post_id)
   end
 end
