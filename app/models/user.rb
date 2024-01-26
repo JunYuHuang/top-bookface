@@ -135,4 +135,8 @@ class User < ApplicationRecord
   def can_reject_follow_request?(args)
     can_accept_follow_request?(args)
   end
+
+  def can_edit_post?(post_id)
+    self.posts.exists?(post_id)
+  end
 end

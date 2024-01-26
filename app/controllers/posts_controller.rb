@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     end
 
     @post = Post.find(params[:id])
+    @can_edit = current_user.can_edit_post?(params[:id])
   end
 
   def create
@@ -36,9 +37,40 @@ class PostsController < ApplicationController
   end
 
   def update
+    unless current_user.can_edit_post?(params[:id])
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to edit post!"
+      )
+      return
+    end
+
+    @post = Post.find(params[:id])
+
+    if @post.update(update_params)
+      redirect_to(
+        post_path(@post.id),
+        status: 303,
+        notice: "✅ Updated post"
+      )
+    else
+      flash.now[:notice] = "💥 Failed to update post!"
+      render :edit, status: 422
+    end
   end
 
   def edit
+    unless current_user.can_edit_post?(params[:id])
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to edit post!"
+      )
+      return
+    end
+
+    @post = Post.find(params[:id])
   end
 
   def destroy
@@ -48,5 +80,9 @@ class PostsController < ApplicationController
 
   def create_params
     params.require(:post).permit(:body)
+  end
+
+  def update_params
+    create_params
   end
 end

@@ -190,14 +190,15 @@ Create Post feature.
 
 Edit Post feature.
 
-- [ ] Update `User` model
-  - [ ] `#can_edit_post?`
-- [ ] Update `Posts` controller
-  - [ ] `#update` (update post if authorized else redirect)
-  - [ ] `#edit` (show edit page)
-- [ ] Update or add `Post` views
-  - [ ] `/posts/show` to show an `Edit Post` link if signed-in user is the author of the post
-  - [ ] `/posts/edit` view to reuse `/posts/_form` partial view
+- [x] Update `User` model
+  - [x] `#can_edit_post?`
+- [x] Update `Posts` controller
+  - [x] `#update` (update post if authorized else redirect)
+  - [x] `#edit` (show edit page)
+  - [x] `#show` (show edit link if authorized)
+- [x] Update or add `Post` views
+  - [x] `/posts/show` to show an `Edit Post` link if signed-in user is the author of the post
+  - [x] `/posts/edit` view to reuse `/posts/_form` partial view
 
 ### Post System - Part 5 Todos
 
