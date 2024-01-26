@@ -240,10 +240,10 @@ Create initial `Like` MVC.
 
 Show like counter on post show page.
 
-- [ ] Update `Posts` controller
-  - [ ] `#show` (fetch count of likes)
-- [ ] Update `Posts` views
-  - [ ] `posts/show` (show count of likes)
+- [x] Update `Posts` controller
+  - [x] `#show` (fetch count of likes)
+- [x] Update `Posts` views
+  - [x] `posts/show` (show count of likes)
 
 ### Like System - Part 3 Todos
 
