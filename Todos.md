@@ -204,12 +204,13 @@ Edit Post feature.
 
 Delete Post feature.
 
-- [ ] Update `User` model
-  - [ ] `#can_delete_post?`
-- [ ] Update `Posts` controller
-  - [ ] `#destroy` (delete post if authorized else redirect)
-- [ ] Update or add `Post` views
-  - [ ] `/posts/show` to show an `Delete Post` link if signed-in user is the author of the post
+- [x] Update `User` model
+  - [x] `#can_delete_post?`
+- [x] Update `Posts` controller
+  - [x] `#destroy` (delete post if authorized else redirect)
+  - [x] `#show` (check if sign-in user can delete post)
+- [x] Update or add `Post` views
+  - [x] `/posts/show` to show an `Delete Post` link if signed-in user is the author of the post
 
 ### Post System - Part 6 Todos
 

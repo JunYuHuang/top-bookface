@@ -7,6 +7,12 @@
   <%= link_to "Edit", edit_post_path(@post.id) %>
 <% end %>
 
+<% if @can_delete %>
+  <%= link_to(
+     "Delete", post_path(@post.id), data: { turbo_method: :delete }
+  ) %>
+<% end %>
+
 <h2>Details</h2>
 <ul>
   <li>

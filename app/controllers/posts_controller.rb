@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
     @post = Post.find(params[:id])
     @can_edit = current_user.can_edit_post?(params[:id])
+    @can_delete = current_user.can_delete_post?(params[:id])
   end
 
   def create
@@ -74,6 +75,27 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    unless current_user.can_delete_post?(params[:id])
+      redirect_to(
+        root_path,
+        status: 403,
+        notice: "✋ Unauthorized to delete post!"
+      )
+      return
+    end
+
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      redirect_to(
+        posts_path,
+        status: 303,
+        notice: "✅ Deleted post"
+      )
+    else
+      flash.now[:notice] = "💥 Failed to delete post!"
+      render :show, status: 422
+    end
   end
 
   private
