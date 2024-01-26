@@ -223,25 +223,56 @@ Update posts index page.
 - [x] Update `shared/_header` partial view
   - [x] Update `Posts` link to go to index page but shows all posts
 
+### Like System - Part 1 Todos
+
+Create initial `Like` MVC.
+
+- [ ] Run Rails generator to create `Like` model
+- [ ] Update new database migration script to set up indices and foreign keys
+- [ ] Add associations to `Like` model
+- [ ] Add associations to `User` model
+- [ ] Add associations to `Post` model
+- [ ] Run Rails generator to create `Likes` controller for the following routes:
+  - [ ] POST `/likes` (`#create`)
+  - [ ] DELETE `/likes/:id/delete` (`#destroy`)
+
+### Like System - Part 2 Todos
+
+Like post feature.
+
+- [ ] Update `User` model
+  - [ ] `#can_like_post?`
+- [ ] Update `Likes` controller
+  - [ ] `#create` (create like)
+- [ ] Add `Shared` partial views
+  - [ ] `shared/_like_form` view
+
+### Like System - Part 3 Todos
+
+Unlike post feature.
+
+- [ ] Update `User` model
+  - [ ] `#can_unlike_post?`
+- [ ] Update `Likes` controller
+  - [ ] `#destroy` (delete like)
+- [ ] Add `Shared` partial views
+  - [ ] `shared/_unlike_form` view
+
 ### Database Optimisation Todos
 
 - [ ] Find and fix N + 1 queries
   - [ ] Checking if the signed-in user can send a follow request to each user in the `users` table.
-  - [ ] TODO
+  - [ ] Querying all the posts authored by users followed by the signed-in user and by the signed-in user themselves
 
-### Uncategorized Todos
+### Nice-To-Have Todos
 
-- [ ] Finish `User` views
-  - [ ] `users/index`
-  - [ ] `users/show`
-- [ ] Finish `User` controller
-  - [ ] `#index`
-  - [ ] `#show`
-  - [ ] `#edit`
-- [ ] Finish `User` routes
-  - [ ] GET `/users`
-  - [ ] GET `/users/:id`
-  - [ ] GET `/users/:id/edit`
-  - [ ] POST `/users/:id`
-- [ ] Create models
+- [ ] Replace certain SSR forms with client-side Turbo forms / links / buttons for SPA-like UX
+  - [ ] `Follow` form / button
+  - [ ] `Unfollow` form / button
+  - [ ] `New Post` form
+  - [ ] `Edit Post` form
+  - [ ] `Like` form / button
+  - [ ] `Unlike` form / button
+  - [ ] `New Comment` form
+  - [ ] `Update Comment` form
 - [ ] Add database seed

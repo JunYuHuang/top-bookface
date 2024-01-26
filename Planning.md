@@ -372,6 +372,14 @@ Step(s):
 
 ## Data Models
 
+For the most up-to-date data models, see the following:
+
+- [Database Schema](./db/schema.rb)
+- [User Model](./app/models/user.rb)
+- [Follow Model](./app/models/follow.rb)
+- [Follow Request Model](./app/models/follow_request.rb)
+- [Post Model](./app/models/post.rb)
+
 Models:
 
 - User
@@ -444,7 +452,7 @@ has_many likes
 ```
 post_id:integer [present] (FK of `Post.id`)
 liker_id:integer [present] (FK of `User.id`)
-id:integer
+id:[post_id, liker_id] (composite PK)
 created_at:datetime
 updated_at:datetime
 
