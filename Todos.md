@@ -264,12 +264,16 @@ Like post feature.
 
 Unlike post feature.
 
-- [ ] Update `User` model
-  - [ ] `#can_unlike_post?`
-- [ ] Update `Likes` controller
-  - [ ] `#destroy` (delete like)
-- [ ] Add `Shared` partial views
-  - [ ] `shared/_unlike_form` view
+- [x] Update `User` model
+  - [x] `#can_unlike_post?`
+- [x] Update `Likes` controller
+  - [x] `#destroy` (delete like)
+- [x] Add `Shared` partial views
+  - [x] `shared/_unlike_form` view
+- [x] Update `Post` controller
+  - [x] `#show` (check if signed-in user can unlike post)
+- [x] Update `Post` views
+  - [x] `posts/show` (show unlike form / button)
 
 ### Database Optimisation Todos
 

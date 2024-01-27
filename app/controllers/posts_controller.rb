@@ -27,6 +27,9 @@ class PostsController < ApplicationController
     @can_delete = current_user.can_delete_post?(params[:id])
     @likes_count = Like.where(post_id: params[:id]).count
     @can_like = current_user.can_like_post?(params[:id])
+    @can_unlike = current_user.can_unlike_post?(
+      { post_id: params[:id], liker_id: current_user.id }
+    )
   end
 
   def create

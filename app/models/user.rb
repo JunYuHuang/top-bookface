@@ -149,4 +149,11 @@ class User < ApplicationRecord
     return false unless Post.exists?(post_id)
     !Like.where(post_id: post_id, liker_id: self.id).exists?
   end
+
+  def can_unlike_post?(args)
+    args => { post_id:, liker_id: }
+    return false unless is_same_user?(liker_id)
+    return false unless Post.exists?(post_id)
+    Like.where(post_id: post_id, liker_id: self.id).exists?
+  end
 end

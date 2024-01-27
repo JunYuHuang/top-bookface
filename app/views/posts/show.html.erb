@@ -11,6 +11,16 @@
   %>
 <% end %>
 
+<% if @can_unlike %>
+  <%=
+    render(
+      partial: "shared/unlike_form", locals: {
+        post_id: @post.id, liker_id: current_user.id
+      }
+    )
+  %>
+<% end %>
+
 <br>
 
 <% if @can_edit %>

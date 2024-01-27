@@ -1,0 +1,7 @@
+<%=
+  form_with(
+    url: like_path([post_id, liker_id]), method: :delete
+  ) do |form|
+%>
+  <%= form.submit "Unlike" %>
+<% end %>
