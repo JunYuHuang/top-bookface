@@ -25,6 +25,7 @@ class User < ApplicationRecord
     :received_follow_requests, class_name: "FollowRequest", foreign_key: "requestee_id"
   )
   has_many :posts, foreign_key: "author_id"
+  has_many :likes, foreign_key: "liker_id"
 
   validates(
     :username, presence: true, uniqueness: { case_sensitive: false }
@@ -142,5 +143,17 @@ class User < ApplicationRecord
 
   def can_delete_post?(post_id)
     can_edit_post?(post_id)
+  end
+
+  def can_like_post?(post_id)
+    return false unless Post.exists?(post_id)
+    !Like.where(post_id: post_id, liker_id: self.id).exists?
+  end
+
+  def can_unlike_post?(args)
+    args => { post_id:, liker_id: }
+    return false unless is_same_user?(liker_id)
+    return false unless Post.exists?(post_id)
+    Like.where(post_id: post_id, liker_id: self.id).exists?
   end
 end
