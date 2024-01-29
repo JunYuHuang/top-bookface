@@ -7,7 +7,7 @@
 - [x] Point 3 (do user auth with Devise gem)
 - [x] Point 4 (build basic user follows system + follow request system)
 - [x] Point 5 (build posts system)
-- [ ] Point 6 (build post likes system)
+- [x] Point 6 (build post likes system)
 - [ ] Point 7 (build post comments system)
 - [ ] Point 8 (post detail page)
 - [x] Point 9 (posts index page)
@@ -27,8 +27,8 @@
 
 ## Getting started
 
-- [ ] Point 1 (plan an design data architecture)
-- [ ] Point 2 (start the Git repo with the boilerplate Rails app)
+- [x] Point 1 (plan and design data architecture)
+- [x] Point 2 (start the Git repo with the boilerplate Rails app)
 - [ ] Point 3 (work on the requirements)
 - [ ] Point 4 (create fake data with a custom database seed)
 
@@ -274,6 +274,68 @@ Unlike post feature.
   - [x] `#show` (check if signed-in user can unlike post)
 - [x] Update `Post` views
   - [x] `posts/show` (show unlike form / button)
+
+### Comment System - Part 1 Todos
+
+Create initial `Comment` MVC.
+
+- [ ] Run Rails generator to create `Comment` model
+- [ ] Update new database migration script to set up indices and foreign keys
+- [ ] Add associations to `Comment` model
+- [ ] Add associations to `Post` model
+- [ ] Add associations to `User` model
+- [ ] Run Rails generator to create `Posts` controller and views for the following routes:
+  - [ ] POST `/posts/:id/comments` -> `#create` (no view)
+  - [ ] PUT `/posts/:id/comments/:comment_id` -> `#update` (no view)
+  - [ ] GET `/posts/:id/comments/:comment_id/edit` -> `#edit`
+  - [ ] DELETE `/posts/:id/comments/:comment_id` -> `#destroy` (no view)
+
+### Comment System - Part 2 Todos
+
+Show comments on post show page.
+
+- [ ] Update `Posts` controller
+  - [ ] `#show()` (fetch comments for the specific post)
+- [ ] Add `Shared` views
+  - [ ] `shared/_comment` partial view
+- [ ] Update `Posts` views
+  - [ ] `posts/show` view (show list of comments)
+
+### Comment System - Part 3 Todos
+
+Create comment feature.
+
+- [ ] Update `Comments` controller
+  - [ ] `#create()` (create new `comments` record in db if valid)
+- [ ] Add `Shared` views
+  - [ ] `shared/_comment_form` partial view
+- [ ] Update `Posts` views
+  - [ ] `posts/show` view (show comment form)
+
+### Comment System - Part 4 Todos
+
+Edit comment feature.
+
+- [ ] Update `User` model
+  - [ ] `#is_comment_author?()` method
+- [ ] Update `Comments` controller
+  - [ ] `#update()` (update `comments` record in db if valid)
+  - [ ] `#edit()` (show edit comment form if valid)
+- [ ] Add `Shared` views
+  - [ ] `shared/_comment` partial view
+    - [ ] show edit link if signed-in user is author of comment
+- [ ] Update `Posts` views
+  - [ ] `posts/show` view (show comment form)
+
+### Comment System - Part 5 Todos
+
+Delete comment feature.
+
+- [ ] Update `Comments` controller
+  - [ ] `#destroy()` (delete `comments` record from db if valid and authorized)
+- [ ] Update `Shared` views
+  - [ ] `shared/_comment` partial view
+    - [ ] show delete link if signed-in user is author of comment
 
 ### Database Optimisation Todos
 
