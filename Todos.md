@@ -8,8 +8,8 @@
 - [x] Point 4 (build basic user follows system + follow request system)
 - [x] Point 5 (build posts system)
 - [x] Point 6 (build post likes system)
-- [ ] Point 7 (build post comments system)
-- [ ] Point 8 (post detail page)
+- [x] Point 7 (build post comments system)
+- [x] Point 8 (post detail page)
 - [x] Point 9 (posts index page)
 - [ ] Point 10 (user has profile picture)
 - [ ] Point 11 (user detail / profile page)
@@ -279,63 +279,64 @@ Unlike post feature.
 
 Create initial `Comment` MVC.
 
-- [ ] Run Rails generator to create `Comment` model
-- [ ] Update new database migration script to set up indices and foreign keys
-- [ ] Add associations to `Comment` model
-- [ ] Add associations to `Post` model
-- [ ] Add associations to `User` model
-- [ ] Run Rails generator to create `Posts` controller and views for the following routes:
-  - [ ] POST `/posts/:id/comments` -> `#create` (no view)
-  - [ ] PUT `/posts/:id/comments/:comment_id` -> `#update` (no view)
-  - [ ] GET `/posts/:id/comments/:comment_id/edit` -> `#edit`
-  - [ ] DELETE `/posts/:id/comments/:comment_id` -> `#destroy` (no view)
+- [x] Run Rails generator to create `Comment` model
+- [x] Update new database migration script to set up indices and foreign keys
+- [x] Add associations to `Comment` model
+- [x] Add associations to `Post` model
+- [x] Add associations to `User` model
+- [x] Run Rails generator to create `Comments` controller and views for the following routes:
+  - [x] POST `/posts/:post_id/comments` -> `#create` (no view)
+  - [x] PUT `/posts/:post_id/comments/:id` -> `#update` (no view)
+  - [x] GET `/posts/:post_id/comments/:id/edit` -> `#edit`
+  - [x] DELETE `/posts/:post_id/comments/:id` -> `#destroy` (no view)
 
 ### Comment System - Part 2 Todos
 
 Show comments on post show page.
 
-- [ ] Update `Posts` controller
-  - [ ] `#show()` (fetch comments for the specific post)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment` partial view
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show list of comments)
+- [x] Update `Posts` controller
+  - [x] `#show()` (fetch comments for the specific post)
+- [x] Add `Shared` views
+  - [x] `shared/_comment` partial view
+- [x] Update `Posts` views
+  - [x] `posts/show` view (show list of comments)
 
 ### Comment System - Part 3 Todos
 
 Create comment feature.
 
-- [ ] Update `Comments` controller
-  - [ ] `#create()` (create new `comments` record in db if valid)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment_form` partial view
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show comment form)
+- [x] Update `Comments` controller
+  - [x] `#create()` (create new `comments` record in db if valid)
+- [x] Add `Shared` views
+  - [x] `shared/_comment_form` partial view
+- [x] Update `Posts` views
+  - [x] `posts/show` view (show comment form)
 
 ### Comment System - Part 4 Todos
 
 Edit comment feature.
 
-- [ ] Update `User` model
-  - [ ] `#is_comment_author?()` method
-- [ ] Update `Comments` controller
-  - [ ] `#update()` (update `comments` record in db if valid)
-  - [ ] `#edit()` (show edit comment form if valid)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment` partial view
-    - [ ] show edit link if signed-in user is author of comment
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show comment form)
+- [x] Update `User` model
+  - [x] `#is_comment_author?()` method
+- [x] Update `Comments` controller
+  - [x] `#update()` (update `comments` record in db if valid)
+- [x] Update `Shared` views
+  - [x] `shared/_comment` partial view
+    - [x] show edit link if signed-in user is author of comment
+- [x] Add `Comment` views
+  - [x] `comments/edit` view (uses comment form)
 
 ### Comment System - Part 5 Todos
 
 Delete comment feature.
 
-- [ ] Update `Comments` controller
-  - [ ] `#destroy()` (delete `comments` record from db if valid and authorized)
-- [ ] Update `Shared` views
-  - [ ] `shared/_comment` partial view
-    - [ ] show delete link if signed-in user is author of comment
+- [x] Update `Comments` controller
+  - [x] `#destroy()` (delete `comments` record from db if valid and authorized)
+- [x] Update `Shared` views
+  - [x] `shared/_comment` partial view
+    - [x] show delete link if signed-in user is author of comment
+- [x] Update `Post` views
+  - [x] `posts/show` (pass in `can_delete` local var to rendered partial view `shared/_comment`)
 
 ### Database Optimisation Todos
 

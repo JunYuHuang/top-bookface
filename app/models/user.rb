@@ -26,6 +26,7 @@ class User < ApplicationRecord
   )
   has_many :posts, foreign_key: "author_id"
   has_many :likes, foreign_key: "liker_id"
+  has_many :comments, foreign_key: "author_id"
 
   validates(
     :username, presence: true, uniqueness: { case_sensitive: false }
@@ -155,5 +156,10 @@ class User < ApplicationRecord
     return false unless is_same_user?(liker_id)
     return false unless Post.exists?(post_id)
     Like.where(post_id: post_id, liker_id: self.id).exists?
+  end
+
+  def is_comment_author?(comment_id)
+    comment = Comment.find(comment_id)
+    is_same_user?(comment.author_id)
   end
 end

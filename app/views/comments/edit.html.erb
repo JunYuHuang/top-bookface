@@ -1,0 +1,14 @@
+<%= render "shared/header" %>
+
+<h1>Edit Comment</h1>
+<%=
+  render(
+    partial: "shared/comment_form",
+    locals: {
+      comment: @comment,
+      url: post_comment_path(@comment.post_id, @comment.id),
+      method: :put,
+      submit_name: "Update Comment"
+    }
+  )
+%>

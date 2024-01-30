@@ -1,0 +1,26 @@
+<p>
+  <span>
+    <em>
+      <%= commenter %> said on <%= date %>:
+    </em>
+  </span>
+  <br>
+  <span><%= body %></span>
+  <br>
+
+  <% if can_edit %>
+    <%=
+      link_to "Edit", edit_post_comment_path(post_id, comment_id)
+    %>
+  <% end %>
+
+  <% if can_delete %>
+    <%=
+      link_to(
+        "Delete",
+        post_comment_path(post_id, comment_id),
+        data: { turbo_method: :delete }
+      )
+    %>
+  <% end %>
+</p>

@@ -30,6 +30,8 @@ class PostsController < ApplicationController
     @can_unlike = current_user.can_unlike_post?(
       { post_id: params[:id], liker_id: current_user.id }
     )
+    @comments = @post.comments
+    @comment = Comment.new(post_id: @post.id)
   end
 
   def create
