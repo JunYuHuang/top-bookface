@@ -1,2 +1,14 @@
-<h1>Comments#edit</h1>
-<p>Find me in app/views/comments/edit.html.erb</p>
+<%= render "shared/header" %>
+
+<h1>Edit Comment</h1>
+<%=
+  render(
+    partial: "shared/comment_form",
+    locals: {
+      comment: @comment,
+      url: post_comment_path(@comment.post_id, @comment.id),
+      method: :put,
+      submit_name: "Update Comment"
+    }
+  )
+%>

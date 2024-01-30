@@ -316,16 +316,15 @@ Create comment feature.
 
 Edit comment feature.
 
-- [ ] Update `User` model
-  - [ ] `#is_comment_author?()` method
-- [ ] Update `Comments` controller
-  - [ ] `#update()` (update `comments` record in db if valid)
-  - [ ] `#edit()` (show edit comment form if valid)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment` partial view
-    - [ ] show edit link if signed-in user is author of comment
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show comment form)
+- [x] Update `User` model
+  - [x] `#is_comment_author?()` method
+- [x] Update `Comments` controller
+  - [x] `#update()` (update `comments` record in db if valid)
+- [x] Update `Shared` views
+  - [x] `shared/_comment` partial view
+    - [x] show edit link if signed-in user is author of comment
+- [x] Add `Comment` views
+  - [x] `comments/edit` view (uses comment form)
 
 ### Comment System - Part 5 Todos
 

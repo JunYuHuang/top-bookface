@@ -6,4 +6,10 @@
   </span>
   <br>
   <span><%= body %></span>
+  <br>
+  <% if can_edit %>
+    <%=
+      link_to "Edit", edit_post_comment_path(post_id, comment_id)
+    %>
+  <% end %>
 </p>

@@ -157,4 +157,9 @@ class User < ApplicationRecord
     return false unless Post.exists?(post_id)
     Like.where(post_id: post_id, liker_id: self.id).exists?
   end
+
+  def is_comment_author?(comment_id)
+    comment = Comment.find(comment_id)
+    is_same_user?(comment.author_id)
+  end
 end
