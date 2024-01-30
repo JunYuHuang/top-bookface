@@ -1,7 +1,29 @@
 <%= render "shared/header" %>
 
 <h1>Post: <%= @post.id %></h1>
-<p><%= @post.body %></p>
+<div>
+  <p><%= @post.body %></p>
+  <span>
+    <em>
+      Posted by
+      <%= current_user.username %>
+      <%=
+        current_user.is_same_user?(@post.author.id) ? " (You)" : ""
+      %>
+      on
+      <%= @post.created_at %>
+    </em>
+  </span>
+  <br>
+  <span>
+    <em>
+      <%= @likes_count %>
+      Like<%= @likes_count == 1 ? "" : "s" %>
+    </em>
+  </span>
+</div>
+
+<br>
 
 <% if @can_like %>
   <%=
@@ -33,19 +55,20 @@
   ) %>
 <% end %>
 
-<h2>Details</h2>
-<ul>
-  <li>
-    Poster:
-    <%= @post.author.username %>
+<h2>Comment(s)</h2>
+<% if @comments.empty? %>
+  <p>None.</p>
+<% else %>
+  <% @comments.each do |comment| %>
     <%=
-      current_user.is_same_user?(@post.author.id) ? " (You)" : ""
+      render(
+        partial: "shared/comment",
+        locals: {
+          commenter: comment.author.username,
+          date: comment.created_at,
+          body: comment.body
+        }
+      )
     %>
-  </li>
-  <li>Posted on <%= @post.created_at %></li>
-  <li>Updated on <%= @post.updated_at %></li>
-  <li>
-    <%= @likes_count %>
-    Like<%= @likes_count == 1 ? "" : "s" %>
-  </li>
-</ul>
+  <% end %>
+<% end %>

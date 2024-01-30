@@ -294,12 +294,12 @@ Create initial `Comment` MVC.
 
 Show comments on post show page.
 
-- [ ] Update `Posts` controller
-  - [ ] `#show()` (fetch comments for the specific post)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment` partial view
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show list of comments)
+- [x] Update `Posts` controller
+  - [x] `#show()` (fetch comments for the specific post)
+- [x] Add `Shared` views
+  - [x] `shared/_comment` partial view
+- [x] Update `Posts` views
+  - [x] `posts/show` view (show list of comments)
 
 ### Comment System - Part 3 Todos
 
