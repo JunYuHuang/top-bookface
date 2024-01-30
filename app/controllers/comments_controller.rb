@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(
       post_id: params[:post_id],
       author_id: current_user.id,
-      body: create_param[:body]
+      body: comment_params[:body]
     )
 
     unless @comment.valid?
@@ -67,7 +67,7 @@ class CommentsController < ApplicationController
       return
     end
 
-    if @comment.update(body: create_param[:body])
+    if @comment.update(body: comment_params[:body])
       puts("Updated comment with id #{@comment.id}!")
       redirect_to(
         post_path(@comment.post_id),
@@ -109,11 +109,46 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+
+    if @comment.nil?
+      redirect_back_or_to(
+        root_path,
+        status: 404,
+        notice: "❓ Comment not found"
+      )
+      return
+    end
+
+    unless current_user.is_comment_author?(@comment.id)
+      redirect_back_or_to(
+        post_comments_path(@comment.post_id),
+        status: 403,
+        notice: "✋ Unauthorized to delete post!"
+      )
+      return
+    end
+
+    if @comment.destroy
+      puts("Deleted comment with id #{@comment.id}!")
+      redirect_to(
+        post_path(@comment.post_id),
+        status: 201,
+        notice: "✅ Deleted comment"
+      )
+    else
+      puts("Failed to delete comment with id #{@comment.id}!")
+      redirect_to(
+        post_path(@comment.post_id),
+        status: 422,
+        notice: "💥 Failed to delete comment!"
+      )
+    end
   end
 
   private
 
-  def create_param
+  def comment_params
     params.require(:comment).permit(:body)
   end
 end

@@ -82,7 +82,8 @@
           body: comment.body,
           post_id: @post.id,
           comment_id: comment.id,
-          can_edit: current_user.id == comment.author_id
+          can_edit: current_user.id == comment.author_id,
+          can_delete: current_user.id == comment.author_id
         }
       )
     %>

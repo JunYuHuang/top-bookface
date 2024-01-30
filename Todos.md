@@ -330,11 +330,13 @@ Edit comment feature.
 
 Delete comment feature.
 
-- [ ] Update `Comments` controller
-  - [ ] `#destroy()` (delete `comments` record from db if valid and authorized)
-- [ ] Update `Shared` views
-  - [ ] `shared/_comment` partial view
-    - [ ] show delete link if signed-in user is author of comment
+- [x] Update `Comments` controller
+  - [x] `#destroy()` (delete `comments` record from db if valid and authorized)
+- [x] Update `Shared` views
+  - [x] `shared/_comment` partial view
+    - [x] show delete link if signed-in user is author of comment
+- [x] Update `Post` views
+  - [x] `posts/show` (pass in `can_delete` local var to rendered partial view `shared/_comment`)
 
 ### Database Optimisation Todos
 
