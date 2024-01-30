@@ -279,16 +279,16 @@ Unlike post feature.
 
 Create initial `Comment` MVC.
 
-- [ ] Run Rails generator to create `Comment` model
-- [ ] Update new database migration script to set up indices and foreign keys
-- [ ] Add associations to `Comment` model
-- [ ] Add associations to `Post` model
-- [ ] Add associations to `User` model
-- [ ] Run Rails generator to create `Posts` controller and views for the following routes:
-  - [ ] POST `/posts/:id/comments` -> `#create` (no view)
-  - [ ] PUT `/posts/:id/comments/:comment_id` -> `#update` (no view)
-  - [ ] GET `/posts/:id/comments/:comment_id/edit` -> `#edit`
-  - [ ] DELETE `/posts/:id/comments/:comment_id` -> `#destroy` (no view)
+- [x] Run Rails generator to create `Comment` model
+- [x] Update new database migration script to set up indices and foreign keys
+- [x] Add associations to `Comment` model
+- [x] Add associations to `Post` model
+- [x] Add associations to `User` model
+- [x] Run Rails generator to create `Comments` controller and views for the following routes:
+  - [x] POST `/comments` -> `#create` (no view)
+  - [x] PUT `/comments/:id` -> `#update` (no view)
+  - [x] GET `/comments/:id/edit` -> `#edit`
+  - [x] DELETE `/comments/:id` -> `#destroy` (no view)
 
 ### Comment System - Part 2 Todos
 
