@@ -1,0 +1,22 @@
+<%=
+  form_with(
+    model: comment, url: url, method: method
+  ) do |form|
+%>
+  <div>
+    <div>
+      <%= form.label :body, "Body:" %>
+    </div>
+    <%= form.text_area :body %>
+
+    <%# TODO - make below show the messages %>
+    <% comment.errors.full_messages_for(:body).each do |msg| %>
+      <div><%= msg %></div>
+    <% end %>
+
+  </div>
+  <br>
+  <div>
+    <%= form.submit "#{submit_name}" %>
+  </div>
+<% end %>

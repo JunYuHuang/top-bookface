@@ -31,6 +31,7 @@ class PostsController < ApplicationController
       { post_id: params[:id], liker_id: current_user.id }
     )
     @comments = @post.comments
+    @comment = Comment.new(post_id: @post.id)
   end
 
   def create

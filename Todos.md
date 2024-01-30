@@ -285,10 +285,10 @@ Create initial `Comment` MVC.
 - [x] Add associations to `Post` model
 - [x] Add associations to `User` model
 - [x] Run Rails generator to create `Comments` controller and views for the following routes:
-  - [x] POST `/comments` -> `#create` (no view)
-  - [x] PUT `/comments/:id` -> `#update` (no view)
-  - [x] GET `/comments/:id/edit` -> `#edit`
-  - [x] DELETE `/comments/:id` -> `#destroy` (no view)
+  - [x] POST `/posts/:post_id/comments` -> `#create` (no view)
+  - [x] PUT `/posts/:post_id/comments/:id` -> `#update` (no view)
+  - [x] GET `/posts/:post_id/comments/:id/edit` -> `#edit`
+  - [x] DELETE `/posts/:post_id/comments/:id` -> `#destroy` (no view)
 
 ### Comment System - Part 2 Todos
 
@@ -305,12 +305,12 @@ Show comments on post show page.
 
 Create comment feature.
 
-- [ ] Update `Comments` controller
-  - [ ] `#create()` (create new `comments` record in db if valid)
-- [ ] Add `Shared` views
-  - [ ] `shared/_comment_form` partial view
-- [ ] Update `Posts` views
-  - [ ] `posts/show` view (show comment form)
+- [x] Update `Comments` controller
+  - [x] `#create()` (create new `comments` record in db if valid)
+- [x] Add `Shared` views
+  - [x] `shared/_comment_form` partial view
+- [x] Update `Posts` views
+  - [x] `posts/show` view (show comment form)
 
 ### Comment System - Part 4 Todos
 

@@ -55,6 +55,19 @@
   ) %>
 <% end %>
 
+<h2>Add A Comment</h2>
+<%=
+  render(
+    partial: "shared/comment_form",
+    locals: {
+      comment: @comment,
+      url: post_comments_path(@post.id),
+      method: :post,
+      submit_name: "Submit Comment"
+    }
+  )
+%>
+
 <h2>Comment(s)</h2>
 <% if @comments.empty? %>
   <p>None.</p>
