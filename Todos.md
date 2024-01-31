@@ -338,6 +338,29 @@ Delete comment feature.
 - [x] Update `Post` views
   - [x] `posts/show` (pass in `can_delete` local var to rendered partial view `shared/_comment`)
 
+### User Profile Feature - Part 1 Todos
+
+Assign Gravatar-generated profile pictures to users.
+
+- [ ] Write `#email_to_sha256_hash(email)` method / function
+  - [ ] downcases `email`
+  - [ ] removes all whitespace from `email`
+  - [ ] returns `email` as a SHA256 hash
+- [ ] Write `#gravatar_image_url(email_hash)` method / function
+  - [ ] returns the correct image url associated with an email hash
+- [ ] Update all `users` DB records that have a null `photo_url` field to be set to the gravatar URL that has their profile picture
+- [ ] Update `User` views
+  - [ ] `users/show`
+    - [ ] Show user's profile image
+    - [ ] Show user's overview stats (date joined, email address, etc.)
+    - [ ] Show user's posts
+
+### User Profile Feature - Part 2 Todos
+
+Assign Gravatar-generated profile pictures by default to newly created / registered users.
+
+- [ ] TODO
+
 ### Database Optimisation Todos
 
 - [ ] Find and fix N + 1 queries
