@@ -6,6 +6,16 @@
   <%= @is_same_user ? " (You)" : "" %>
 </h1>
 
+<img
+  src="
+    <%=
+      @user.photo_url && @user.photo_url != "" ?
+        @user.photo_url : "/assets/user_fallback_image.png"
+    %>
+  "
+  alt="Profile picture of <%= @user.username %>"
+/>
+
 <% if @can_follow %>
   <%=
     render(
@@ -30,4 +40,31 @@
   %>
 <% end %>
 
-<p>User profile body</p>
+<h2>Overview</h2>
+<ul>
+  <li>Email: <%= @user.email %></li>
+  <li>Joined: <%= @user.created_at %></li>
+  <li>
+    <%= @follower_count == 1 ? "Follower" : "Followers" %>:
+    <%= @follower_count %>
+  </li>
+  <li>Following: <%= @followee_count %></li>
+  <li>
+    <%= @posts.size == 1 ? "Post" : "Posts" %>:
+    <%= @posts.size %>
+  </li>
+</ul>
+
+<h2>Post(s)</h2>
+<% if @posts.empty? %>
+  <p>None.</p>
+<% else %>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to "#{post.body}", post_path(post.id) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+

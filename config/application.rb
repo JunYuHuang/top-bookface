@@ -18,5 +18,16 @@ module TopBookface
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Set up auto-loading for all files in `/lib`
+    lib = root.join("lib")
+
+    config.autoload_paths << lib
+    config.eager_load_paths << lib
+
+    Rails.autoloaders.main.ignore(
+      lib.join("assets"),
+      lib.join("tasks"),
+    )
   end
 end

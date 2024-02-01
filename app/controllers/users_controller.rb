@@ -14,5 +14,9 @@ class UsersController < ApplicationController
     @can_unfollow = current_user.can_unfollow?(
       { followee_id: @user.id, follower_id: current_user.id }
     )
+    @follower_count = @user.followers.count
+    @followee_count = @user.followees.count
+    @post_count = @user.posts.count
+    @posts = @user.posts
   end
 end
