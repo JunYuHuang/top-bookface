@@ -361,7 +361,9 @@ Assign Gravatar-generated profile pictures to users.
 
 Assign Gravatar-generated profile pictures by default to newly created / registered users.
 
-- [ ] TODO
+- [x] Generate `devise/registrations` controller
+- [x] Update `devise/registrations` controller
+  - [x] Update `#create` to auto-fill in the `photo_url` field for newly created users
 
 ### Database Optimisation Todos
 
