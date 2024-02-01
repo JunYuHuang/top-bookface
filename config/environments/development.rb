@@ -44,6 +44,10 @@ Rails.application.configure do
     host: 'localhost', port: 3000
   }
 
+  # Set up delivery method via `letter_opener` gem
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
