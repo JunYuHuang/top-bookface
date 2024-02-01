@@ -11,8 +11,8 @@
 - [x] Point 7 (build post comments system)
 - [x] Point 8 (post detail page)
 - [x] Point 9 (posts index page)
-- [ ] Point 10 (user has profile picture)
-- [ ] Point 11 (user detail / profile page)
+- [x] Point 10 (user has profile picture)
+- [x] Point 11 (user detail / profile page)
 - [x] Point 12 (users index page)
 - [ ] Point 13 (email new users who sign up)
 - [ ] Point 14 (deploy app)
@@ -342,18 +342,20 @@ Delete comment feature.
 
 Assign Gravatar-generated profile pictures to users.
 
-- [ ] Write `#email_to_sha256_hash(email)` method / function
-  - [ ] downcases `email`
-  - [ ] removes all whitespace from `email`
-  - [ ] returns `email` as a SHA256 hash
-- [ ] Write `#gravatar_image_url(email_hash)` method / function
-  - [ ] returns the correct image url associated with an email hash
-- [ ] Update all `users` DB records that have a null `photo_url` field to be set to the gravatar URL that has their profile picture
-- [ ] Update `User` views
-  - [ ] `users/show`
-    - [ ] Show user's profile image
-    - [ ] Show user's overview stats (date joined, email address, etc.)
-    - [ ] Show user's posts
+- [x] Set up autoloading for modules located in `/lib`
+- [x] Create `GravatarAPILib` module in `/lib`
+  - [x] Write `#image_url(email)` class method
+    - [x] downcases `email`
+    - [x] removes all whitespace from `email`
+    - [x] returns `email` as a SHA256 hash
+    - [x] returns the correct image url associated with an email hash
+- [x] Update all `users` DB records that have a null `photo_url` field to be set to the gravatar URL that has their profile picture
+- [x] Add fallback user profile picture as asset
+- [x] Update `User` views
+  - [x] `users/show`
+    - [x] Show user's profile image
+    - [x] Show user's overview stats (date joined, email address, etc.)
+    - [x] Show user's posts
 
 ### User Profile Feature - Part 2 Todos
 
