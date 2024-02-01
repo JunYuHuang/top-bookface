@@ -365,6 +365,21 @@ Assign Gravatar-generated profile pictures by default to newly created / registe
 - [x] Update `devise/registrations` controller
   - [x] Update `#create` to auto-fill in the `photo_url` field for newly created users
 
+### User Welcome Email Feature - Part 1 Todos
+
+Send a welcome email to a new user's email address when they sign up.
+
+- [ ] Configure mailer in Rails
+- [ ] Update `users/registrations` controller
+  - [ ] Update `#create` action to send the email after the user record is created in the database
+- [ ] Test the feature in dev mode using the `letter_opener` gem
+
+### Production Deployment - Part 1 Todos
+
+Deploy the application live hosted on Fly.io
+
+- [ ] TODO
+
 ### Database Optimisation Todos
 
 - [ ] Find and fix N + 1 queries
