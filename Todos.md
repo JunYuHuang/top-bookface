@@ -14,7 +14,7 @@
 - [x] Point 10 (user has profile picture)
 - [x] Point 11 (user detail / profile page)
 - [x] Point 12 (users index page)
-- [ ] Point 13 (email new users who sign up)
+- [x] Point 13 (email new users who sign up)
 - [ ] Point 14 (deploy app)
 - [ ] Point 15 (set up email provider to send real emails)
 
@@ -369,10 +369,13 @@ Assign Gravatar-generated profile pictures by default to newly created / registe
 
 Send a welcome email to a new user's email address when they sign up.
 
-- [ ] Configure mailer in Rails
-- [ ] Update `users/registrations` controller
-  - [ ] Update `#create` action to send the email after the user record is created in the database
-- [ ] Test the feature in dev mode using the `letter_opener` gem
+- [x] Configure mailer in Rails
+  - [x] Generate the `User` mailer
+  - [x] Create the mailer view (email template)
+- [x] Update `users/registrations` controller
+  - [x] Update `#create` action to send the email after the user record is created in the database
+- [x] Install and configure `letter_opener` gem
+- [x] Test the feature in dev mode using the `letter_opener` gem
 
 ### Production Deployment - Part 1 Todos
 

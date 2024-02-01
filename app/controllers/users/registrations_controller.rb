@@ -14,7 +14,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.photo_url = GravatarApiLib.image_url(resource.email)
 
-    resource.save
+    if resource.save
+      UserMailer.with(user: resource).welcome_email.deliver_later
+    end
+
     yield resource if block_given?
     if resource.persisted?
       if resource.active_for_authentication?
