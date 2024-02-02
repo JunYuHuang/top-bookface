@@ -1,9 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  photo_url: MyString
-
-two:
-  username: MyString
-  photo_url: MyString
+  username: user1
+  email: user1@test.com
+  photo_url: ""
+# two:
+#   username: user2
+#   email: user2@test.com
+#   photo_url: ""

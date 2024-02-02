@@ -377,6 +377,21 @@ Send a welcome email to a new user's email address when they sign up.
 - [x] Install and configure `letter_opener` gem
 - [x] Test the feature in dev mode using the `letter_opener` gem
 
+### Tests - Part 1 Todos
+
+Set up basic testing infrastructure
+
+- [x] Update auto-generated tests so they do not fail automatically
+- [x] Write any test that passes
+- [x] Install and configure `guard` gem to continously run tests in the background
+
+### Tests - Part ? Todos
+
+TODO
+
+- [ ] Figure out how to write tests that test model associations
+- [ ] Figure out how to write tests that test if pages load correctly
+
 ### Production Deployment - Part 1 Todos
 
 Deploy the application live hosted on Fly.io
