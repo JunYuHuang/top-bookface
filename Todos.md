@@ -387,14 +387,21 @@ Set up basic testing infrastructure
 
 ### Tests - Part 2 Todos
 
-Write a few basic unit and integration tests.
+Write a few basic unit tests.
 
-- [ ] Write unit tests
-  - [ ] Test if `User#followers` association works
-  - [ ] Test if `User#followees` association works
-  - [ ] Test if `User#posts` association works
-  - [ ] Test if `User#likes` association works
-  - [ ] Test if `User#comments` association works
+- [x] Write unit tests
+  - [x] Test if `User#followers` association works
+  - [x] Test if `User#followees` association works
+  - [x] Test if `User#sent_follow_requests` association works
+  - [x] Test if `User#received_follow_requests` association works
+  - [x] Test if `User#posts` association works
+  - [x] Test if `User#comments` association works
+  - [x] Test if `User#likes` association works
+
+### Tests - Part 3 Todos
+
+Write a few basic integration tests.
+
 - [ ] Write integration tests
   - [ ] Test if the GET `/posts` page loads correctly if there is a signed-in user
   - [ ] Test if the GET `/posts/:id` page loads correctly if there is a signed-in user
