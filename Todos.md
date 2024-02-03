@@ -385,12 +385,21 @@ Set up basic testing infrastructure
 - [x] Write any test that passes
 - [x] Install and configure `guard` gem to continously run tests in the background
 
-### Tests - Part ? Todos
+### Tests - Part 2 Todos
 
-TODO
+Write a few basic unit and integration tests.
 
-- [ ] Figure out how to write tests that test model associations
-- [ ] Figure out how to write tests that test if pages load correctly
+- [ ] Write unit tests
+  - [ ] Test if `User#followers` association works
+  - [ ] Test if `User#followees` association works
+  - [ ] Test if `User#posts` association works
+  - [ ] Test if `User#likes` association works
+  - [ ] Test if `User#comments` association works
+- [ ] Write integration tests
+  - [ ] Test if the GET `/posts` page loads correctly if there is a signed-in user
+  - [ ] Test if the GET `/posts/:id` page loads correctly if there is a signed-in user
+  - [ ] Test if the `/users/sign_in` page loads correctly regardless of if the user is signed in or not
+  - [ ] Test if the `/users/sign_up` page loads correctly regardless of if the user is signed in or not
 
 ### Production Deployment - Part 1 Todos
 
