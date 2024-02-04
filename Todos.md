@@ -402,11 +402,14 @@ Write a few basic unit tests.
 
 Write a few basic integration tests.
 
-- [ ] Write integration tests
-  - [ ] Test if the GET `/posts` page loads correctly if there is a signed-in user
-  - [ ] Test if the GET `/posts/:id` page loads correctly if there is a signed-in user
-  - [ ] Test if the `/users/sign_in` page loads correctly regardless of if the user is signed in or not
-  - [ ] Test if the `/users/sign_up` page loads correctly regardless of if the user is signed in or not
+- [x] Write integration tests
+  - [x] Test if visiting the GET `/` page redirects to the `/users/sign_in` page if the user is not signed in
+  - [x] Test if vsiting the `/` page loads correctly if the user is signed in
+  - [x] Test if the `/users/sign_in` page loads if the user is not signed in
+  - [x] Test if visiting the `/users/sign_in` page redirects to `/` if the user is signed in
+  - [x] Test if the `/users/sign_up` page loads correctly regardless of if the user is signed in or not
+  - [x] Test if visiting the `/users/sign_up` page redirects to `/` if the user is signed in
+  - [x] Test if the GET `/posts/:id` page loads correctly if there is a signed-in user
 
 ### Production Deployment - Part 1 Todos
 
