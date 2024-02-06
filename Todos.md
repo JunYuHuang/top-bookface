@@ -15,7 +15,7 @@
 - [x] Point 11 (user detail / profile page)
 - [x] Point 12 (users index page)
 - [x] Point 13 (email new users who sign up)
-- [ ] Point 14 (deploy app)
+- [x] Point 14 (deploy app)
 - [ ] Point 15 (set up email provider to send real emails)
 
 ## Extra Credit
@@ -415,7 +415,7 @@ Write a few basic integration tests.
 
 Deploy the application live hosted on Fly.io
 
-- [ ] TODO
+- [x] Done
 
 ### Database Optimisation Todos
 
